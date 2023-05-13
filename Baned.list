@@ -1,4 +1,7 @@
 # 内容：Baned
+# 范例：
+# DOMAIN-SUFFIX,xxxx.com
+# DOMAIN-KEYWORD,xxxx.com
 DOMAIN-SUFFIX,hrichina.org
 DOMAIN-SUFFIX,voacantonese.com
 DOMAIN-SUFFIX,voanews.com
