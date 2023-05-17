@@ -1,4 +1,10 @@
 # 内容：USA
+# 范例：
+# DOMAIN-SUFFIX,xxxx.com
+# DOMAIN-KEYWORD,xxxx
 DOMAIN-SUFFIX,plex.tv
+DOMAIN-KEYWORD,plex
 DOMAIN-SUFFIX,pluto.tv
+DOMAIN-KEYWORD,pluto
 DOMAIN-SUFFIX,xumo.com
+DOMAIN-KEYWORD,xumo.com
