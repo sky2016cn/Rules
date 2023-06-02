@@ -166,7 +166,7 @@ dns:
       - +.googletagmanager.com
       - +.googletagservices.com
 proxies:
-  - {name: 🇺🇸 RackNerd-3T专线, server: rn.skyline520.top, port: 51362, type: trojan, password: YV4PxIRjg9, skip-cert-verify: true, udp: true}
+  - {name: 🇺🇸 RackNerd-3T专线, server: rn.skyline520.top, port: 51362, type: trojan, password: YV4PxlRjg9, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 代理
     type: select
