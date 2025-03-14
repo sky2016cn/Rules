@@ -1,0 +1,39 @@
+# 我的代理，需要走代理的域名可以在下面添加
+
+# 领英国际
+DOMAIN-SUFFIX,linkedin.com
+
+# 提取自 WestData 机场的配置文件
+DOMAIN-SUFFIX,ocsp.entrust.net
+DOMAIN-SUFFIX,bootstrapcdn.com
+DOMAIN-SUFFIX,jquery.com
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,squareup.com
+DOMAIN-SUFFIX,spotify.com
+DOMAIN-SUFFIX,expedia.de
+DOMAIN-SUFFIX,amazon.com
+DOMAIN-SUFFIX,foursquare.com
+DOMAIN-SUFFIX,battle.net
+DOMAIN-SUFFIX,steampowered.com
+DOMAIN-SUFFIX,carbonmade.com
+DOMAIN-SUFFIX,courses.edx.org
+DOMAIN-SUFFIX,slack.com
+DOMAIN-SUFFIX,khanacademy.org
+DOMAIN-SUFFIX,paypal.com
+DOMAIN-SUFFIX,500px.com
+DOMAIN-SUFFIX,airbnb.com
+DOMAIN-SUFFIX,meetup.com
+DOMAIN-SUFFIX,bitbucket.org
+DOMAIN-SUFFIX,indeed.com
+DOMAIN-SUFFIX,vk.com
+DOMAIN-SUFFIX,airbnb.com
+DOMAIN-SUFFIX,digicert.com
+DOMAIN-SUFFIX,ubuntu.com
+DOMAIN-SUFFIX,skype.com
+DOMAIN-SUFFIX,live.com
+DOMAIN-SUFFIX,whrq.net
+DOMAIN-SUFFIX,msn.com
+DOMAIN-SUFFIX,scorecardresearch.com
+DOMAIN-SUFFIX,akamaized.net
+DOMAIN-SUFFIX,yandex.md
+DOMAIN-SUFFIX,cloudflareinsights.com
