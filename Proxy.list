@@ -2,6 +2,8 @@
 
 # TVB APP
 DOMAIN-SUFFIX,app-measurement.com
+DOMAIN-SUFFIX,facebook.com
+DOMAIN-SUFFIX,mytvsuper.com
 
 # 领英国际
 DOMAIN-SUFFIX,linkedin.com
