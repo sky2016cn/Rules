@@ -3,6 +3,14 @@
 # 微软官网直连
 # outlook邮箱直连
 
+# 同花顺
+DOMAIN-SUFFIX,10jqka.com.cn
+DOMAIN-SUFFIX,thsi.cn
+DOMAIN-SUFFIX,hexin.cn
+
+# 文华随身行
+DOMAIN-SUFFIX,wenhua.com.cn
+
 # Apple
 DOMAIN-SUFFIX,apple.com.cn
 DOMAIN-SUFFIX,icloud.com.cn
