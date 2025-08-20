@@ -1,4 +1,6 @@
 # 我的直连，包含国内和国外的域名
+# 同花顺直连
+# 文华期货直连
 # Apple国内官网和国内iCLoud直连
 # 微软官网直连
 # outlook邮箱直连
@@ -8,7 +10,7 @@ DOMAIN-SUFFIX,10jqka.com.cn
 DOMAIN-SUFFIX,thsi.cn
 DOMAIN-SUFFIX,hexin.cn
 
-# 文华随身行
+# 文华期货
 DOMAIN-SUFFIX,wenhua.com.cn
 
 # Apple
