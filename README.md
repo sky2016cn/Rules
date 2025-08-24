@@ -15,6 +15,7 @@
 ---
 
 # Clash 规则匹配类型如下：
+---
 
 - DOMAIN-SUFFIX：匹配域名后缀，例如：DOMAIN-SUFFIX,google.com：匹配 google.com和 www.google.com
 - DOMAIN：完全匹配域名
@@ -25,4 +26,7 @@
 - DST-PORT：目标端口匹配
 - SRC-PORT：源端口匹配
 - MATCH：全匹配（一般放在最后）
+
+---
+
 
