@@ -2,10 +2,12 @@
 ---
 
 一、节点组：（只是名称，不包含任何节点）
+
 custom_proxy_group=🚀 节点选择
 custom_proxy_group=♻️ 自动选择
 
 自建节点组（可自定义）
+
 custom_proxy_group=♻️ 美国节点
 custom_proxy_group=♻️ 自建节点
 custom_proxy_group=🚀 美国选择
