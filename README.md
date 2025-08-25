@@ -11,6 +11,10 @@
    - 🎯 全球直连=DIRECT（国内直连）
    - 🍃 应用净化（是指APP的广告拦截）
    - PROXY（表示走代理）
+     
+-还可以自建各节点组合     
+   - custom_proxy_group=🚀 美日节点`select`(United States)`(Japan)
+   - custom_proxy_group=♻️ 美日节点`url-test`(United States)`(Japan)`http://www.gstatic.com/generate_204`300,,50
 
 ---
 
