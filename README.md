@@ -27,7 +27,7 @@ url-test（自动选择）
 
 举例1：“🚀 节点选择”节点组
 
-# custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`.*`[]DIRECT
+#custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`.*`[]DIRECT
 
 解释：手动选择3种类型：[]♻️ 自动选择 +  .*（所有节点） +  []DIRECT（直连）
 
