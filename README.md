@@ -14,10 +14,12 @@ custom_proxy_group=🚀 美国选择
 custom_proxy_group=🚀 美日选择
 
 2.节点组后面只能2种选择：
+
 select（手动选择）
 url-test（自动选择）
 
 3.各国节点集合：
+
 包含美国节点集合：(United States)
 包含日本节点集合：(Japan)
 包含所有节点集合：.*
@@ -28,42 +30,42 @@ url-test（自动选择）
 
 二、创建各“节点组”
 
-举例1：“🚀 节点选择”节点组
+- 举例1：“🚀 节点选择”节点组
 
 custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`.*`[]DIRECT
 
 解释：手动选择3种类型：[]♻️ 自动选择 +  .*（所有节点） +  []DIRECT（直连）
 
 
-举例2：“♻️ 自动选择”节点组
+- 举例2：“♻️ 自动选择”节点组
 
 custom_proxy_group=♻️ 自动选择`url-test`.*`http://www.gstatic.com/generate_204`300,,50
 
 解释：自动选择所有节点，因为包含：url-test（自动选择）和 .*`（所有节点）
 
 
-举例3：创建“🚀 美国选择”节点组，可手动选择美国节点
+- 举例3：创建“🚀 美国选择”节点组，可手动选择美国节点
 
 custom_proxy_group=🚀 美国选择`select`(United States)`[]♻️ 美国节点
 
 解释：手动选择2种类型：(United States) （美国节点集合） +  []♻️ 美国节点（美国自动选择集合）
 
 
-举例4：创建“🚀 美日选择”节点组，手动选择美国日本节点
+- 举例4：创建“🚀 美日选择”节点组，手动选择美国日本节点
 
 custom_proxy_group=🚀 美日选择`select`(United States)`(Japan)`[]♻️ 美日自动
 
 解释：手动选择2种类型：美日节点集合 + ♻️ 美日自动
 
 
-举例5：创建“♻️ 美日自动”节点组，自动选择美国日本节点的集合
+- 举例5：创建“♻️ 美日自动”节点组，自动选择美国日本节点的集合
 
 custom_proxy_group=♻️ 美日自动`url-test`(United States)`(Japan)`http://www.gstatic.com/generate_204`300,,50
 
 解释：自动选择美国日本节点，包含：url-test、(United States)`(Japan)
 
 
-- 二、各分流规则使用“节点组”分流
+三、各分流规则使用“节点组”分流
 
 需要在“节点组”名称前加符合“[]”，例如：🚀 美国选择，改为：`[]🚀 美国选择
 
