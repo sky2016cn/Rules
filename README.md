@@ -2,7 +2,7 @@
 ---
 
 - 模板中的符号：
- -以下是各节点组合  
+ - 以下是各节点组合  
    - `[]🚀 节点选择（手动选择节点，本身不包含节点，必须搭配下方任意节点组合）
    - `[]♻️ 美国节点（所有美国节点）
    - `[]♻️ 自建节点（所有自建节点）
@@ -11,11 +11,7 @@
    - 🎯 全球直连=DIRECT（国内直连）
    - 🍃 应用净化（是指APP的广告拦截）
    - PROXY（表示走代理）
-     
--还可以自建各节点组合     
-   - custom_proxy_group=🚀 美日节点`select`(United States)`(Japan)
-   - custom_proxy_group=♻️ 美日节点`url-test`(United States)`(Japan)`http://www.gstatic.com/generate_204`300,,50
-
+    
 ---
 
 # Clash 规则匹配类型如下：
