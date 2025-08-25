@@ -1,7 +1,7 @@
 # Clash 配置模板说明：
 ---
 
-- 一、节点组：（只是名称，不包含任何节点）
+一、节点组：（只是名称，不包含任何节点）
 custom_proxy_group=🚀 节点选择
 custom_proxy_group=♻️ 自动选择
 
@@ -24,7 +24,7 @@ url-test（自动选择）
 
 ---
 
-- 二、创建各“节点组”
+二、创建各“节点组”
 
 举例1：“🚀 节点选择”节点组
 
@@ -67,7 +67,7 @@ custom_proxy_group=♻️ 美日自动`url-test`(United States)`(Japan)`http://w
 
 举例：🎥 GoogleUI 分流规则
 
-# custom_proxy_group=🎥 GoogleUI`select`[]🚀 美国选择`[]♻️ 自建节点
+custom_proxy_group=🎥 GoogleUI`select`[]🚀 美国选择`[]♻️ 自建节点
 
 解释：“🎥 GoogleUI”分流规则可选择2种节点集合：🚀 美国选择  +  ♻️ 自建节点
       后面不需要再添加：[]♻️ 美国节点 + .*
