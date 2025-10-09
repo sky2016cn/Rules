@@ -1,7 +1,0 @@
-# 我的代理，需要走代理的域名可以在下面添加
-# 同源: https://github.com/sky2016cn/Rules/blob/main/Proxy.list
-
-payload:
-
-# 领英国际
-  - DOMAIN-SUFFIX,linkedin.com
