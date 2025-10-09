@@ -33,7 +33,7 @@ DOMAIN-SUFFIX,apple.com.cn
 DOMAIN-SUFFIX,icloud.com.cn
 
 # Microsoft
-microsoft.com
+DOMAIN-SUFFIX,microsoft.com
 
 # Mail
 DOMAIN,imap-mail.outlook.com
