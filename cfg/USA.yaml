@@ -1,0 +1,30 @@
+# 内容：USA
+# 范例：
+# DOMAIN-SUFFIX,xxxx.com
+# DOMAIN-KEYWORD,xxxx
+# 同源: https://github.com/sky2016cn/Rules/blob/main/USA.list
+
+payload:
+
+# plex
+  - DOMAIN-SUFFIX,plex.tv
+  - DOMAIN-KEYWORD,plex
+
+# plutoTV
+  - DOMAIN-SUFFIX,pluto.tv
+  - DOMAIN-SUFFIX,plutotv.net
+  - DOMAIN-KEYWORD,pluto
+  - DOMAIN-KEYWORD,plutotv
+
+# xumo
+  - DOMAIN-SUFFIX,xumo.com
+  - DOMAIN-KEYWORD,xumo
+
+# tubi
+  - DOMAIN-SUFFIX,tubitv.com
+  - DOMAIN-SUFFIX,tubi.video
+  - DOMAIN-SUFFIX,adrise.tv
+  - DOMAIN-SUFFIX,amazontrust.com
+  - DOMAIN-SUFFIX,production-public.tubi.io
+  - DOMAIN-KEYWORD,tubi
+  - DOMAIN-KEYWORD,adrise
