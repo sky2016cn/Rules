@@ -44,3 +44,7 @@ payload:
   - DOMAIN,smtp-mail.outlook.com
   - DOMAIN,smtp.office365.com
   - DOMAIN-SUFFIX,m.hotmail.com
+
+# 领英国际
+  - DOMAIN-SUFFIX,linkedin.cn
+ 
