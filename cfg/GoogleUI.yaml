@@ -1,5 +1,0 @@
-# 内容：GoogleUI
-# 同源: https://github.com/sky2016cn/Rules/blob/main/GoogleUI.list
-
-payload:
-  - DOMAIN-SUFFIX,googleapis.com
