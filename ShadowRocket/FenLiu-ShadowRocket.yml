@@ -291,6 +291,9 @@ rules:
   - DOMAIN-SUFFIX,wunderlist.com,DIRECT
   - DOMAIN-SUFFIX,yammer.com,DIRECT
   - DOMAIN-SUFFIX,yammerusercontent.com,DIRECT
+  - DOMAIN-SUFFIX,github.com,🚀 节点选择
+  - DOMAIN-SUFFIX,github.io,🚀 节点选择
+  - DOMAIN-SUFFIX,githubusercontent.com,🚀 节点选择
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择
   - DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择
   - IP-CIDR,120.232.181.162/32,🚀 节点选择,no-resolve
