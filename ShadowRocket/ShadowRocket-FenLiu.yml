@@ -72,7 +72,7 @@ proxy-groups:
     type: select
     proxies:
       - 🚀 节点选择
-  - name: 🌍 Banned
+  - name: ⚠️ Banned
     type: select
     proxies:
       - 🚀 节点选择
@@ -2105,72 +2105,72 @@ rules:
   - DOMAIN-SUFFIX,bbci.co,🎥 BBCiPlayer
   - DOMAIN-SUFFIX,bbci.co.uk,🎥 BBCiPlayer
   - DOMAIN-SUFFIX,bidi.net.uk,🎥 BBCiPlayer
-  - DOMAIN-SUFFIX,hrichina.org,🌍 Banned
-  - DOMAIN-KEYWORD,hrichina,🌍 Banned
-  - DOMAIN-SUFFIX,voacantonese.com,🌍 Banned
-  - DOMAIN-KEYWORD,voacantonese,🌍 Banned
-  - DOMAIN-SUFFIX,voanews.com,🌍 Banned
-  - DOMAIN-KEYWORD,voanews,🌍 Banned
-  - DOMAIN-SUFFIX,voachinese.com,🌍 Banned
-  - DOMAIN-KEYWORD,voachinese,🌍 Banned
-  - DOMAIN-SUFFIX,insidevoa.com,🌍 Banned
-  - DOMAIN-KEYWORD,insidevoa,🌍 Banned
-  - DOMAIN-SUFFIX,voasomail.com,🌍 Banned
-  - DOMAIN-KEYWORD,voasomail,🌍 Banned
-  - DOMAIN-SUFFIX,amnesty.com,🌍 Banned
-  - DOMAIN-KEYWORD,amnesty,🌍 Banned
-  - DOMAIN-SUFFIX,botanwang.com,🌍 Banned
-  - DOMAIN-KEYWORD,botanwang,🌍 Banned
-  - DOMAIN-SUFFIX,canyu.com,🌍 Banned
-  - DOMAIN-KEYWORD,canyu,🌍 Banned
-  - DOMAIN-SUFFIX,epochtimes.com,🌍 Banned
-  - DOMAIN-KEYWORD,epochtimes,🌍 Banned
-  - DOMAIN-SUFFIX,falundafa.com,🌍 Banned
-  - DOMAIN-KEYWORD,falundafa,🌍 Banned
-  - DOMAIN-SUFFIX,freedomchina.info,🌍 Banned
-  - DOMAIN-KEYWORD,freedomchina,🌍 Banned
-  - DOMAIN-SUFFIX,freeweibo.com,🌍 Banned
-  - DOMAIN-KEYWORD,freeweibo,🌍 Banned
-  - DOMAIN-SUFFIX,greatfire.com,🌍 Banned
-  - DOMAIN-KEYWORD,greatfire,🌍 Banned
-  - DOMAIN-SUFFIX,minghui.com,🌍 Banned
-  - DOMAIN-KEYWORD,minghui,🌍 Banned
-  - DOMAIN-SUFFIX,rfa.org,🌍 Banned
-  - DOMAIN-KEYWORD,rfa,🌍 Banned
-  - DOMAIN-SUFFIX,theepochtimes.com,🌍 Banned
-  - DOMAIN-KEYWORD,theepochtimes,🌍 Banned
-  - DOMAIN-SUFFIX,thetibetpost.com,🌍 Banned
-  - DOMAIN-KEYWORD,thetibetpost,🌍 Banned
-  - DOMAIN-SUFFIX,tibet.com,🌍 Banned
-  - DOMAIN-KEYWORD,tibet,🌍 Banned
-  - DOMAIN-SUFFIX,xizang-zhiye.com,🌍 Banned
-  - DOMAIN-KEYWORD,xizang-zhiye,🌍 Banned
-  - DOMAIN-SUFFIX,xinsheng.com,🌍 Banned
-  - DOMAIN-KEYWORD,xinsheng,🌍 Banned
-  - DOMAIN-SUFFIX,yuanming.net,🌍 Banned
-  - DOMAIN-KEYWORD,yuanming,🌍 Banned
-  - DOMAIN-SUFFIX,zhengjian.com,🌍 Banned
-  - DOMAIN-KEYWORD,zhengjian,🌍 Banned
-  - DOMAIN-SUFFIX,ntdtv.com,🌍 Banned
-  - DOMAIN-KEYWORD,ntdtv,🌍 Banned
-  - DOMAIN-SUFFIX,pincong.com,🌍 Banned
-  - DOMAIN-KEYWORD,pincong,🌍 Banned
-  - DOMAIN-SUFFIX,creaders.com,🌍 Banned
-  - DOMAIN-KEYWORD,creaders,🌍 Banned
-  - DOMAIN-SUFFIX,aboluowang.com,🌍 Banned
-  - DOMAIN-KEYWORD,aboluowang,🌍 Banned
-  - DOMAIN-SUFFIX,qycz.com,🌍 Banned
-  - DOMAIN-KEYWORD,qycz,🌍 Banned
-  - DOMAIN-SUFFIX,wenxuecity.com,🌍 Banned
-  - DOMAIN-KEYWORD,wenxuecity,🌍 Banned
-  - DOMAIN-SUFFIX,secretchina.com,🌍 Banned
-  - DOMAIN-KEYWORD,secretchina,🌍 Banned
-  - DOMAIN-SUFFIX,soundofhope.com,🌍 Banned
-  - DOMAIN-KEYWORD,soundofhope,🌍 Banned
-  - DOMAIN-SUFFIX,chinadigitaltimes.net,🌍 Banned
-  - DOMAIN-KEYWORD,chinadigitaltimes,🌍 Banned
-  - DOMAIN-SUFFIX,yuanming.com,🌍 Banned
-  - DOMAIN-KEYWORD,yuanming,🌍 Banned
+  - DOMAIN-SUFFIX,hrichina.org,⚠️ Banned
+  - DOMAIN-KEYWORD,hrichina,⚠️ Banned
+  - DOMAIN-SUFFIX,voacantonese.com,⚠️ Banned
+  - DOMAIN-KEYWORD,voacantonese,⚠️ Banned
+  - DOMAIN-SUFFIX,voanews.com,⚠️ Banned
+  - DOMAIN-KEYWORD,voanews,⚠️ Banned
+  - DOMAIN-SUFFIX,voachinese.com,⚠️ Banned
+  - DOMAIN-KEYWORD,voachinese,⚠️ Banned
+  - DOMAIN-SUFFIX,insidevoa.com,⚠️ Banned
+  - DOMAIN-KEYWORD,insidevoa,⚠️ Banned
+  - DOMAIN-SUFFIX,voasomail.com,⚠️ Banned
+  - DOMAIN-KEYWORD,voasomail,⚠️ Banned
+  - DOMAIN-SUFFIX,amnesty.com,⚠️ Banned
+  - DOMAIN-KEYWORD,amnesty,⚠️ Banned
+  - DOMAIN-SUFFIX,botanwang.com,⚠️ Banned
+  - DOMAIN-KEYWORD,botanwang,⚠️ Banned
+  - DOMAIN-SUFFIX,canyu.com,⚠️ Banned
+  - DOMAIN-KEYWORD,canyu,⚠️ Banned
+  - DOMAIN-SUFFIX,epochtimes.com,⚠️ Banned
+  - DOMAIN-KEYWORD,epochtimes,⚠️ Banned
+  - DOMAIN-SUFFIX,falundafa.com,⚠️ Banned
+  - DOMAIN-KEYWORD,falundafa,⚠️ Banned
+  - DOMAIN-SUFFIX,freedomchina.info,⚠️ Banned
+  - DOMAIN-KEYWORD,freedomchina,⚠️ Banned
+  - DOMAIN-SUFFIX,freeweibo.com,⚠️ Banned
+  - DOMAIN-KEYWORD,freeweibo,⚠️ Banned
+  - DOMAIN-SUFFIX,greatfire.com,⚠️ Banned
+  - DOMAIN-KEYWORD,greatfire,⚠️ Banned
+  - DOMAIN-SUFFIX,minghui.com,⚠️ Banned
+  - DOMAIN-KEYWORD,minghui,⚠️ Banned
+  - DOMAIN-SUFFIX,rfa.org,⚠️ Banned
+  - DOMAIN-KEYWORD,rfa,⚠️ Banned
+  - DOMAIN-SUFFIX,theepochtimes.com,⚠️ Banned
+  - DOMAIN-KEYWORD,theepochtimes,⚠️ Banned
+  - DOMAIN-SUFFIX,thetibetpost.com,⚠️ Banned
+  - DOMAIN-KEYWORD,thetibetpost,⚠️ Banned
+  - DOMAIN-SUFFIX,tibet.com,⚠️ Banned
+  - DOMAIN-KEYWORD,tibet,⚠️ Banned
+  - DOMAIN-SUFFIX,xizang-zhiye.com,⚠️ Banned
+  - DOMAIN-KEYWORD,xizang-zhiye,⚠️ Banned
+  - DOMAIN-SUFFIX,xinsheng.com,⚠️ Banned
+  - DOMAIN-KEYWORD,xinsheng,⚠️ Banned
+  - DOMAIN-SUFFIX,yuanming.net,⚠️ Banned
+  - DOMAIN-KEYWORD,yuanming,⚠️ Banned
+  - DOMAIN-SUFFIX,zhengjian.com,⚠️ Banned
+  - DOMAIN-KEYWORD,zhengjian,⚠️ Banned
+  - DOMAIN-SUFFIX,ntdtv.com,⚠️ Banned
+  - DOMAIN-KEYWORD,ntdtv,⚠️ Banned
+  - DOMAIN-SUFFIX,pincong.com,⚠️ Banned
+  - DOMAIN-KEYWORD,pincong,⚠️ Banned
+  - DOMAIN-SUFFIX,creaders.com,⚠️ Banned
+  - DOMAIN-KEYWORD,creaders,⚠️ Banned
+  - DOMAIN-SUFFIX,aboluowang.com,⚠️ Banned
+  - DOMAIN-KEYWORD,aboluowang,⚠️ Banned
+  - DOMAIN-SUFFIX,qycz.com,⚠️ Banned
+  - DOMAIN-KEYWORD,qycz,⚠️ Banned
+  - DOMAIN-SUFFIX,wenxuecity.com,⚠️ Banned
+  - DOMAIN-KEYWORD,wenxuecity,⚠️ Banned
+  - DOMAIN-SUFFIX,secretchina.com,⚠️ Banned
+  - DOMAIN-KEYWORD,secretchina,⚠️ Banned
+  - DOMAIN-SUFFIX,soundofhope.com,⚠️ Banned
+  - DOMAIN-KEYWORD,soundofhope,⚠️ Banned
+  - DOMAIN-SUFFIX,chinadigitaltimes.net,⚠️ Banned
+  - DOMAIN-KEYWORD,chinadigitaltimes,⚠️ Banned
+  - DOMAIN-SUFFIX,yuanming.com,⚠️ Banned
+  - DOMAIN-KEYWORD,yuanming,⚠️ Banned
   - DOMAIN,0123456789nonexistent.com,DIRECT
   - DOMAIN,0d.kebhana.mx,DIRECT
   - DOMAIN,1.tracker.eu.org,DIRECT
