@@ -4,7 +4,7 @@
 - 模板中的“🎯 全球直连”节点：
    - 必须自建“🎯 全球直连”节点，才能正常使用
    - proxies:（添加自建节点）
-   -    - {name: 🎯 全球直连, type: direct}
+   -    -- {name: 🎯 全球直连, type: direct}
    - 每个策略组都自动包含“🎯 全球直连”，不需要手动再添加
    - 如果某个策略组需要默认“🎯 全球直连”，需要手动添加到最前面
    - 此模板适用于 OpenClash、Clash Verge，不适用于 Clash for Windows
@@ -13,19 +13,19 @@
 
 - 1.规则集选择节点：
 
-   -    - {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-"}
+   -    -- {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-"}
 
    -解释：include-all: true, filter: "(?i)P-"
 
    -在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
 
 
-   -    - {name: 🎥 GoogleUI, type: select, include-all: true, exclude-type: direct}
+   -    -- {name: 🎥 GoogleUI, type: select, include-all: true, exclude-type: direct}
 
    -解释：在 include-all: true（包含所有节点）中，exclude-type: direct（除了🎯 全球直连）
 
 
-   -    - {name: 🎥 GoogleUI, type: select, include-all: true}
+   -    -- {name: 🎥 GoogleUI, type: select, include-all: true}
 
 解释：include-all: true（包含所有节点，包括🎯 全球直连）
 
@@ -33,7 +33,7 @@
 
 - 2.选择你想要的某个节点和节点组组合：
 
-   -    - {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-", proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点]} 
+   -    -- {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-", proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点]} 
 
    -解释：在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
 
@@ -43,7 +43,7 @@
 
 - 3.选择所有的节点和节点组组合：
 
-   -    - {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点]} 
+   -    -- {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点]} 
 
    -解释：include-all: true（包含所有节点）
    -proxies: [🚀 节点选择, 🇸🇬 新加坡节点] （可选择“🚀 节点选择”节点组和“🇸🇬 新加坡节点”节点组）
@@ -55,7 +55,7 @@
 
 - 1.创建“😎 自建节点,”节点组:
 
-   -    - {name: 😎 自建节点, type: select, include-all: true, filter: "(?i)P-"}
+   -    -- {name: 😎 自建节点, type: select, include-all: true, filter: "(?i)P-"}
 
    -解释：filter: "(?i)P"    意思是只包含”P-“的节点
 
