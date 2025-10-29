@@ -1,0 +1,101 @@
+# 模板说明：
+---
+
+- 模板中的“🎯 全球直连”节点：
+   - 必须自建“🎯 全球直连”节点，才能正常使用
+   - proxies:（添加自建节点）
+   -    - {name: 🎯 全球直连, type: direct}
+   - 每个策略组都自动包含“🎯 全球直连”，不需要手动再添加
+   - 如果某个策略组需要默认“🎯 全球直连”，需要手动添加到最前面
+   - 此模板适用于 OpenClash、Clash Verge，不适用于 Clash for Windows
+
+---
+
+- 1.规则集选择节点：
+
+   -    - {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-"}
+
+   -解释：include-all: true, filter: "(?i)P-"
+
+   -在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
+
+
+   -    - {name: 🎥 GoogleUI, type: select, include-all: true, exclude-type: direct}
+
+   -解释：在 include-all: true（包含所有节点）中，exclude-type: direct（除了🎯 全球直连）
+
+
+   -    - {name: 🎥 GoogleUI, type: select, include-all: true}
+
+解释：include-all: true（包含所有节点，包括🎯 全球直连）
+
+---
+
+- 2.选择你想要的某个节点和节点组组合：
+
+   -    - {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-", proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点]} 
+
+   -解释：在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
+
+   -proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点] （可选择“🇭🇰 香港节点”节点组和“🇸🇬 新加坡节点”节点组）
+
+---
+
+- 3.选择所有的节点和节点组组合：
+
+   -    - {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点]} 
+
+   -解释：include-all: true（包含所有节点）
+   -proxies: [🚀 节点选择, 🇸🇬 新加坡节点] （可选择“🚀 节点选择”节点组和“🇸🇬 新加坡节点”节点组）
+
+---
+
+
+创建节点组:
+
+- 1.创建“😎 自建节点,”节点组:
+
+   -    - {name: 😎 自建节点, type: select, include-all: true, filter: "(?i)P-"}
+
+   -解释：filter: "(?i)P"    意思是只包含”P-“的节点
+
+
+- 2.创建带自动测速“🇭🇰 香港节点”节点组:
+
+   -    - {name: 🇭🇰 香港节点, type: url-test, include-all: true, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港", url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50}
+
+解释：填入香港关键字到 filter:"" 引号中间，去匹配所有包含 香港 或 hk 等字母的节点，“url”后面是自动测速 
+
+   -✔注意：前面必须带参数：type: url-test，强烈建议直接使用此命令，替换名称和 filter:""引号中间的过滤名称即可
+
+
+- 3.创建“🌏 全部节点,”节点组:（不建议使用，只是做个记录）
+
+   -    - {name: 🌏 全部节点, type: select, include-all: true}
+   -解释：
+   -包含全部节点（包含直连）
+   -不建议创建“🌏 全部节点”
+   -因为不能自由选择所有节点，只能选择“🌏 全部节点”节点组，没有意义
+
+
+
+
+
+---
+
+# Clash 规则匹配类型如下：
+---
+
+- DOMAIN-SUFFIX：匹配域名后缀，例如：DOMAIN-SUFFIX,google.com：匹配 google.com和 www.google.com
+- DOMAIN：完全匹配域名
+- DOMAIN-KEYWORD：关键词匹配域名
+- IP-CIDR / IP-CIDR6：IP段匹配，IP CIDR 范围，都添加 no-resolve，是为了避免触发 DNS 解析
+- SRC-IP-CIDR：源IP段匹配
+- GEOIP：GEOIP数据库（国家代码）匹配
+- DST-PORT：目标端口匹配
+- SRC-PORT：源端口匹配
+- MATCH：全匹配（一般放在最后）
+
+---
+
+
