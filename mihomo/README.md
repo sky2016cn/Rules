@@ -27,7 +27,7 @@
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true}
 
-解释：include-all: true（包含所有节点，包括🎯 全球直连）
+   - 解释：include-all: true（包含所有节点，包括🎯 全球直连）
 
 ---
 
