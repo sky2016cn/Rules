@@ -15,10 +15,8 @@
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-"}
 
-   - 解释：include-all: true, filter: "(?i)P-"
-
-   - 在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
-
+   - 解释：include-all: true, filter: "(?i)P-"  在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
+     
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true, exclude-type: direct}
 
