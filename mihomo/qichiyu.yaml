@@ -1,7 +1,7 @@
 # 模板地址：https://github.com/qichiyuhub/rule/blob/main/config/mihomo/config.yaml
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 跑裸核用户请自行去掉下方控制面板模块的注释。
-# 机场订阅
+# 机场订阅，Airport1、Airport2，可以添加多个机场
 proxy-providers:
   Airport1:
     url: "机场订阅填到这里，两端引号不要去掉"
@@ -13,7 +13,7 @@ proxy-providers:
       interval: 300
     proxy: 🎯 全球直连
 
-# 自建节点，不能删除“🎯 全球直连”节点，否则无法运行
+# 添加自建节点，不能删除“🎯 全球直连”节点，否则无法运行
 proxies:
   - {name: 🎯 全球直连, type: direct}
 
@@ -99,9 +99,7 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
  
-# 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
-# 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
-# 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
+# 管理界面排序
 proxy-groups:
   - {name: 🚀 节点选择, type: select, include-all: true, proxies: [♻️ 自动选择, 😎 自建节点, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]} 
   - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-type: direct, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50}
@@ -144,7 +142,7 @@ proxy-groups:
   - {name: 🌐 其他地区, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:港|HK|hk|Hong Kong|HongKong|hongkong|深港|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|JP|Japan|🇯🇵|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|加拿大|Canada|渥太华|温哥华|卡尔加里|英国|Britain|United Kingdom|England|伦敦|法国|France|巴黎|德国|Germany|柏林|法兰克福|荷兰|Netherlands|阿姆斯特丹|土耳其|Turkey|Türkiye)).*"}
   - {name: 🐟 漏网之鱼, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区, ♻️ 自动选择, 🎯 全球直连]}
   
-# 规则匹配
+# 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
   - RULE-SET,private_ip,🎯 全球直连,no-resolve
@@ -190,7 +188,7 @@ rules:
   - RULE-SET,cn_ip,🎯 全球直连
   - MATCH,🐟 漏网之鱼
 
-# 规则集
+# 规则集，排序对应上面的 rule-set
 ## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
