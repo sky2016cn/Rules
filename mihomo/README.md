@@ -15,12 +15,16 @@
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true, filter: "(?i)P-"}
 
-   - 解释：include-all: true, filter: "(?i)P-"  在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
+   - 解释：
+   - type: select（选择）
+   - include-all: true（全部节点）
+   - include-all: true, filter: "(?i)P-"
+   - 在 include-all: true（包含所有节点）中，filter: "(?i)P-"（只选择包含 P- 的节点）
      
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true, exclude-type: direct}
-
-   - 解释：在 include-all: true（包含所有节点）中，exclude-type: direct（除了🎯 全球直连）
+   - 解释：
+   - 在 include-all: true（包含所有节点）中，exclude-type: direct（除了🎯 全球直连）
 
 
    -    -- {name: 🎥 GoogleUI, type: select, include-all: true}
@@ -62,8 +66,9 @@
 
    -    -- {name: 🇭🇰 香港节点, type: url-test, include-all: true, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港", url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50}
 
-   - 解释：填入香港关键字到 filter:"" 引号中间，去匹配所有包含 香港 或 hk 等字母的节点，“url”后面是自动测速 
-
+   - 解释：
+   - type: url-test（测速）
+   - 填入香港关键字到 filter:"" 引号中间，去匹配所有包含 香港 或 hk 等字母的节点，“url”后面是自动测速 
    - ✔注意：前面必须带参数：type: url-test，强烈建议直接使用此命令，替换名称和 filter:""引号中间的过滤名称即可
 
 
