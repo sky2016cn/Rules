@@ -104,7 +104,7 @@ dns:
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 😎 自建节点, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]} 
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-type: direct, url: "https://www.gstatic.com/generate_204", interval: 300, tolerance: 50}
   - {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🇺🇸 美国节点, 🚀 节点选择, 🇸🇬 新加坡节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]}
   - {name: 🎥 TVB, type: select, include-all: true, proxies: [🇭🇰 香港节点, 🚀 节点选择, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]}  
   - {name: 🎥 NETFLIX, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区, ♻️ 自动选择]}
