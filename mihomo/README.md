@@ -1,4 +1,4 @@
-# 模板说明：如果无法使用AppleTV，请添加“🍎 苹果服务”规则到AppleTV下方，下载后可导入到 OpenClash、Clash Verge，不适用于 Clash for Windows，如果需要提取规则改为远程配置文件“.ini”，需要把模板中的注释符号“#”改为“;”
+# 模板说明：如果无法使用AppleTV，请添加“🍎 苹果服务”规则到“AppleTV”规则下方，下载后可导入到 OpenClash、Clash Verge，不适用于 Clash for Windows，如果需要提取规则改为远程配置文件“.ini”，需要把模板中的注释符号“#”改为“;”
 ---
 
 - 模板中的“🎯 全球直连”节点：
