@@ -1,4 +1,4 @@
-# 模板说明：这是手搓 mihomo 配置文件，可下载后导入到 OpenClash、Clash Verge，不适用于 Clash for Windows，如果将来需要提取规则改为远程配置文件“.ini”，需要把模板中的注释符合“#”改为“;”
+# 模板说明：这是手搓 mihomo 配置文件，可下载后导入到 OpenClash、Clash Verge，不适用于 Clash for Windows，如果将来需要提取规则改为远程配置文件“.ini”，需要把模板中的注释符号“#”改为“;”
 ---
 
 - 模板中的“🎯 全球直连”节点：
