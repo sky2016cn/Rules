@@ -141,29 +141,23 @@ proxy-groups:
   - {name: 🌐 其他地区, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:港|HK|hk|Hong Kong|HongKong|hongkong|深港|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|JP|Japan|🇯🇵|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|加拿大|Canada|渥太华|温哥华|卡尔加里|英国|Britain|United Kingdom|England|伦敦|法国|France|巴黎|德国|Germany|柏林|法兰克福|荷兰|Netherlands|阿姆斯特丹|土耳其|Turkey|Türkiye)).*"}
   - {name: 🐟 漏网之鱼, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]}
   
-# 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
+# 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
 rules:
   - RULE-SET,private_ip,🎯 全球直连,no-resolve
   - RULE-SET,private_domain,🎯 全球直连
   - RULE-SET,MyDirect_domain,🎯 全球直连
+  - RULE-SET,MyProxy_domain,🚀 节点选择
   - RULE-SET,GoogleUI_domain_1,🎥 GoogleUI
   - RULE-SET,GoogleUI_domain_2,🎥 GoogleUI 
   - RULE-SET,GoogleUI_domain_3,🎥 GoogleUI
-  - RULE-SET,MyProxy_domain,🚀 节点选择
-  - RULE-SET,github_domain,🚀 GitHub 
-  - RULE-SET,Binance_domain,💰 币安交易
-  - RULE-SET,Reddit_domain,🚀 Reddit 
-  - RULE-SET,AppleMail_domain,🎯 全球直连
-  - RULE-SET,Bing_domain,Ⓜ️ 微软Bing
-  - RULE-SET,microsoft_domain,🎯 全球直连
-  - RULE-SET,Apple_domain,🚀 节点选择
   - RULE-SET,TVB_domain_1,🎥 TVB
   - RULE-SET,TVB_domain_2,🎥 TVB
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎥 Disney
   - RULE-SET,youtube_domain,🎥 YouTube
-  - RULE-SET,AppleTV_domain,🎥 AppleTV 
+  - RULE-SET,AppleTV_domain,🎥 AppleTV
+  - RULE-SET,Apple_domain,🎯 全球直连
   - RULE-SET,USA_domain,🎥 USA
   - RULE-SET,tiktok_domain,🎵 TikTok
   - RULE-SET,PrimeVideo_domain,🎥 PrimeVideo
@@ -173,13 +167,19 @@ rules:
   - RULE-SET,BBCiPlayer_domain,🎥 BBCiPlayer
   - RULE-SET,Banned_domain,⚠️ Banned
   - RULE-SET,BT_domain,🧲 BT
+  - RULE-SET,github_domain,🚀 GitHub 
+  - RULE-SET,Binance_domain,💰 币安交易
+  - RULE-SET,Reddit_domain,🚀 Reddit 
+  - RULE-SET,AppleMail_domain,🎯 全球直连
   - RULE-SET,telegram_domain,📲 Telegram  
   - RULE-SET,ai,🤖 ChatGPT  
+  - RULE-SET,Bing_domain,Ⓜ️ 微软Bing
+  - RULE-SET,microsoft_domain,🎯 全球直连
   - RULE-SET,onedrive_domain,🐬 OneDrive  
   - RULE-SET,paypal_domain,💶 PayPal   
   - RULE-SET,google_domain,🚀 节点选择
   - RULE-SET,google_ip,🚀 节点选择
-  - RULE-SET,apple_ip,🚀 节点选择
+  - RULE-SET,apple_ip,🎯 全球直连
   - RULE-SET,netflix_ip,🎥 NETFLIX
   - RULE-SET,telegram_ip,📲 Telegram
   - RULE-SET,geolocation-!cn,🚀 节点选择  
