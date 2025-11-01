@@ -101,7 +101,7 @@ dns:
  
 # 管理界面排序
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, include-all: true, proxies: [🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]} 
+  - {name: 🚀 节点选择, type: select, include-all: true, proxies: [😎 自建节点, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]} 
   - {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]}
   - {name: 🎥 TVB, type: select, include-all: true, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港", proxies: [🇭🇰 香港节点]}
   - {name: 🎥 NETFLIX, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇼🇸 台湾节点, 🇰🇷 韩国节点, 🇨🇦 加拿大节点, 🇬🇧 英国节点, 🇫🇷 法国节点, 🇩🇪 德国节点, 🇳🇱 荷兰节点, 🇹🇷 土耳其节点, 🌐 其他地区]}
