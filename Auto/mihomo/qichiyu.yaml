@@ -103,10 +103,10 @@ dns:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, include-all: true, proxies: [😎 自建节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
   - {name: 🎥 GoogleUI, type: select, include-all: true, proxies: [🇺🇸 美国节点组, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 YouTube, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🎥 TVB, type: select, include-all: true, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港", proxies: [🇭🇰 香港节点组]}
   - {name: 🎥 NETFLIX, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🎥 Disney, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
-  - {name: 🎥 YouTube, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🎥 AppleTV, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🎥 USA, type: select, include-all: true, filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates", proxies: [🇺🇸 美国节点组]}
   - {name: 🎵 TikTok, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
@@ -152,11 +152,11 @@ rules:
   - RULE-SET,GoogleUI_domain_1,🎥 GoogleUI
   - RULE-SET,GoogleUI_domain_2,🎥 GoogleUI 
   - RULE-SET,GoogleUI_domain_3,🎥 GoogleUI
+  - RULE-SET,youtube_domain,🎥 YouTube  
   - RULE-SET,TVB_domain_1,🎥 TVB
   - RULE-SET,TVB_domain_2,🎥 TVB
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎥 Disney
-  - RULE-SET,youtube_domain,🎥 YouTube
   - RULE-SET,AppleTV_domain,🎥 AppleTV
   - RULE-SET,Apple_domain,🎯 全球直连
   - RULE-SET,USA_domain,🎥 USA
