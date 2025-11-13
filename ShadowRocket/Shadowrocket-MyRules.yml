@@ -1,4 +1,14 @@
 
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - 🔯 故障转移
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204`300,,20
+    interval: 300
+    tolerance: 50
 rules:
   - DOMAIN-SUFFIX,acl4.ssr,DIRECT
   - DOMAIN-SUFFIX,ip6-localhost,DIRECT
