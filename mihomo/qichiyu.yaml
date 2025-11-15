@@ -149,10 +149,8 @@ rules:
   - RULE-SET,private_domain,🎯 全球直连
   - RULE-SET,MyDirect_domain,🎯 全球直连
   - RULE-SET,MyProxy_domain,🚀 节点选择
-  - RULE-SET,GoogleUI_domain_1,🎥 GoogleUI
-  - RULE-SET,GoogleUI_domain_2,🎥 GoogleUI 
-  - RULE-SET,GoogleUI_domain_3,🎥 GoogleUI
-  - RULE-SET,youtube_domain,🎥 YouTube
+  - RULE-SET,youtube_domain_1,🎥 YouTube
+  - RULE-SET,GoogleUI_domain,🎥 GoogleUI
   - RULE-SET,TVB_domain_1,🎥 TVB
   - RULE-SET,TVB_domain_2,🎥 TVB
   - RULE-SET,netflix_domain,🎥 NETFLIX
@@ -168,17 +166,18 @@ rules:
   - RULE-SET,BBCiPlayer_domain,🎥 BBCiPlayer
   - RULE-SET,Banned_domain,⚠️ Banned
   - RULE-SET,BT_domain,🧲 BT
+  - RULE-SET,telegram_domain,📲 Telegram 
+  - RULE-SET,ai,🤖 ChatGPT 
   - RULE-SET,github_domain,🚀 GitHub 
   - RULE-SET,Binance_domain,💰 币安交易
   - RULE-SET,Reddit_domain,🚀 Reddit 
-  - RULE-SET,AppleMail_domain,🎯 全球直连
-  - RULE-SET,telegram_domain,📲 Telegram  
-  - RULE-SET,ai,🤖 ChatGPT  
+  - RULE-SET,AppleMail_domain,🎯 全球直连   
   - RULE-SET,Bing_domain,Ⓜ️ 微软Bing
   - RULE-SET,microsoft_domain,🎯 全球直连
   - RULE-SET,onedrive_domain,🐬 OneDrive  
   - RULE-SET,paypal_domain,💶 PayPal   
   - RULE-SET,google_domain,🚀 节点选择
+# IP类规则 
   - RULE-SET,google_ip,🚀 节点选择
   - RULE-SET,apple_ip,🎯 全球直连
   - RULE-SET,netflix_ip,🎥 NETFLIX
@@ -197,9 +196,6 @@ rule-anchor:
 rule-providers: 
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   MyDirect_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Direct.list"}
-  GoogleUI_domain_1: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
-  GoogleUI_domain_2: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleVoice/GoogleVoice.list"}
-  GoogleUI_domain_3: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list"}
   MyProxy_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Proxy.list"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   Binance_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/binance.mrs"}
@@ -207,13 +203,14 @@ rule-providers:
   AppleMail_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.list"}
   Bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/bing.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
+  Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/apple.mrs"}
   TVB_domain_1: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/tvb.mrs"}
   TVB_domain_2: { <<: *domain, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBiliIntl/BiliBiliIntl.list"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/disney.mrs"}
-  youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  youtube_domain_1: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  GoogleUI_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
   AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/apple-tvplus.mrs"}
-  Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/apple.mrs"}
   USA_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/USA.list"}
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
   PrimeVideo_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/primevideo.mrs"}
