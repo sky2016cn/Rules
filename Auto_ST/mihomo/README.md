@@ -1,8 +1,7 @@
-# 模板说明：如果无法使用AppleTV，请添加“🍎 苹果服务”规则到“AppleTV”规则下方，下载后可导入到 OpenClash、Clash Verge，不适用于 Clash for Windows，如果需要提取规则改为远程配置文件“.ini”，需要把模板中的注释符号“#”改为“;”
+# 模板说明：适用于 OpenClash、Clash Verge，不适用于 Clash for Windows
 ---
 
-- 模板中的“🎯 全球直连”节点：
-   - 必须自建“🎯 全球直连”节点，才能正常使用
+- 模板必须自建“🎯 全球直连”节点，才能正常使用：
    - proxies:（添加自建节点）
    -    -- {name: 🎯 全球直连, type: direct}
    - 每个策略组都自动包含“🎯 全球直连”，不需要手动再添加
