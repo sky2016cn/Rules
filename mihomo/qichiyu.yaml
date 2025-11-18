@@ -1,3 +1,4 @@
+# 此模板适用于 Chromecast
 # 模板地址：https://github.com/qichiyuhub/rule/blob/main/config/mihomo/config.yaml
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 跑裸核用户请自行去掉下方控制面板模块的注释。
