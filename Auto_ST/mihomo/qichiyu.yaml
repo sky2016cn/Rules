@@ -44,7 +44,7 @@ profile:
 #secret: ""
 #external-ui: "/etc/mihomo/ui"
 #external-ui-name: zashboard
-#external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+#external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip"
 
 # 嗅探
 sniffer:
@@ -119,7 +119,6 @@ proxy-groups:
   - {name: 🧲 BT, type: select, include-all: true, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}  
   - {name: 🚀 GitHub, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 💰 币安交易, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
-  - {name: 🚀 Reddit, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 📲 Telegram, type: select, include-all: true, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🤖 ChatGPT, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
   - {name: Ⓜ️ 微软Bing, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]} 
@@ -171,7 +170,6 @@ rules:
   - RULE-SET,ai,🤖 ChatGPT 
   - RULE-SET,github_domain,🚀 GitHub 
   - RULE-SET,Binance_domain,💰 币安交易
-  - RULE-SET,Reddit_domain,🚀 Reddit  
   - RULE-SET,Bing_domain,Ⓜ️ 微软Bing
   - RULE-SET,microsoft_domain,🎯 全球直连
   - RULE-SET,onedrive_domain,🐬 OneDrive  
@@ -200,27 +198,26 @@ rule-providers:
   MyProxy_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Proxy.list"}
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   GoogleUI_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
-  TVB_domain_1: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/tvb.mrs"}
+  TVB_domain_1: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tvb.mrs"}
   TVB_domain_2: { <<: *domain, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBiliIntl/BiliBiliIntl.list"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
-  disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/disney.mrs"}
-  AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/apple-tvplus.mrs"}
-  Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/apple.mrs"} 
+  disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
+  AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-tvplus.mrs"}
+  Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"} 
   USA_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/USA.list"}
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
-  PrimeVideo_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/primevideo.mrs"}
-  Hulu_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/hulu.mrs"}
-  HBO_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/hbo.mrs"}
-  AbemaTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/abema.mrs"}
+  PrimeVideo_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/primevideo.mrs"}
+  Hulu_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hulu.mrs"}
+  HBO_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hbo.mrs"}
+  AbemaTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/abema.mrs"}
   BBCiPlayer_domain: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BBCiPlayer.list"}
   Banned_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Banned.list"}
-  BT_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geoip/bt.mrs"}
+  BT_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/bt.mrs"}
   telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
   ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
-  Binance_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/binance.mrs"}
-  Reddit_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/reddit.mrs"}
-  Bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/bing.mrs"}
+  Binance_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"}
+  Bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   onedrive_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
   paypal_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs"}
