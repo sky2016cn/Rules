@@ -27,7 +27,7 @@ DOMAIN-SUFFIX,citics.com
 DOMAIN-SUFFIX,cfhc.citic
 DOMAIN-SUFFIX,videocc.net
 
-# Mail
+# Microsoft Mail
 DOMAIN,imap-mail.outlook.com
 DOMAIN,outlook.office365.com
 DOMAIN,smtp-mail.outlook.com
