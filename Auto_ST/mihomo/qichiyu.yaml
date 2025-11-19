@@ -155,7 +155,6 @@ rules:
   - RULE-SET,XianYu_domain,🎯 全球直连
   - RULE-SET,MeiTuan_domain,🎯 全球直连
   - RULE-SET,private_domain,🎯 全球直连
-  - RULE-SET,AppleMail_domain,🎯 全球直连
   - RULE-SET,MyDirect_domain,🎯 全球直连
   - RULE-SET,MyProxy_domain,🚀 节点选择
   - RULE-SET,youtube_domain,🎥 YouTube
@@ -165,6 +164,7 @@ rules:
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎥 Disney
   - RULE-SET,AppleTV_domain,🎥 AppleTV
+  - RULE-SET,AppleMail_domain,🎯 全球直连
   - RULE-SET,Apple_domain,🎯 全球直连
   - RULE-SET,USA_domain,🎥 USA
   - RULE-SET,tiktok_domain,🎵 TikTok
@@ -209,7 +209,6 @@ rule-providers:
   JingDong_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/jd.mrs"}
   XianYu_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/XianYu/XianYu.list"} 
   MeiTuan_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meituan.mrs"}  
-  AppleMail_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.list"}
   MyDirect_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Direct.list"}
   MyProxy_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Proxy.list"}
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
@@ -219,6 +218,7 @@ rule-providers:
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
   AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-tvplus.mrs"}
+  AppleMail_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail.list"}
   Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"} 
   USA_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/USA.list"}
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
