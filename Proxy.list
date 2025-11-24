@@ -2,6 +2,3 @@
 
 # 领英国际
 DOMAIN-SUFFIX,linkedin.com
-
-# Github actions 下载
-DOMAIN-SUFFIX,productionresultssa15.blob.core.windows.net
