@@ -10,8 +10,6 @@ proxy-providers:
     interval: 86400
     health-check:
       enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
     proxy: 🎯 全球直连
 
 # 添加自建节点，不能删除“🎯 全球直连”节点，否则无法运行
