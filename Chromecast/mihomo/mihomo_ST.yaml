@@ -1,0 +1,249 @@
+# 此模板适用于 Chromecast
+# 此模板增加了工行、微信、支付宝、阿里巴巴、闲鱼、京东、美团等规则
+# 模板地址：https://github.com/qichiyuhub/rule/blob/main/config/mihomo/config.yaml
+# 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
+# 跑裸核用户请自行去掉下方控制面板模块的注释。
+# 机场订阅，Airport1、Airport2，可以添加多个机场
+
+proxy-providers:
+  Airport1:
+    url: "机场订阅填到这里，两端引号不要去掉"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🎯 全球直连
+
+# 添加自建节点，不能删除“🎯 全球直连”节点，否则无法运行
+proxies:
+  - {name: 🎯 全球直连, type: direct}
+
+# 全局配置 
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
+allow-lan: true
+bind-address: "*"
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+# interface-name: enp6s18
+log-level: warning
+find-process-mode: 'off'
+global-client-fingerprint: chrome
+keep-alive-idle: 600
+keep-alive-interval: 15
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 为防止使用插件朋友遇到面板问题，我注释掉了此模块。
+# 跑裸核朋友自行删除注释即可，使用nikki仅内核的ui路径改为/etc/nikki/run/ui
+#external-controller: 0.0.0.0:9090
+#secret: ""
+#external-ui: "/etc/mihomo/ui"
+#external-ui-name: zashboard
+#external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip"
+
+# 嗅探
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - "+.v2ex.com"
+  skip-domain:
+    - "+.baidu.com"
+
+# 入站  
+tun:
+  enable: true
+  # system/gvisor/mixed
+  stack: mixed
+  dns-hijack: ["any:53", "tcp://any:53"]
+  #使用nikki，混入全部不修改的情况，开启接口指定为nikki
+  #使用仅内核自行修改下面三项为true
+  #device: nikki
+  auto-route: false
+  auto-redirect: false
+  auto-detect-interface: false
+
+# DNS模块
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "rule-set:private_domain,cn_domain"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "time.*.com"
+    - "+.market.xiaomi.com"
+  default-nameserver:
+    - 223.5.5.5
+  proxy-server-nameserver:
+    - 119.29.29.29
+  # namesever尽量用运营商提供的DNS
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+ 
+# 管理界面排序
+proxy-groups:
+  - {name: 🚀 节点选择, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [😎 自建节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
+  - {name: 🎥 GoogleUI, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🇺🇸 美国节点组, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🚀 节点选择]}
+  - {name: 🎥 YouTube, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 TVB, type: select, include-all: true, tolerance: 50, interval: 300, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港", proxies: [🇭🇰 香港节点组, 🚀 节点选择]}
+  - {name: 🎥 NETFLIX, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 Disney, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 AppleTV, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 USA, type: select, include-all: true, tolerance: 50, interval: 300, filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates", proxies: [🇺🇸 美国节点组, 🚀 节点选择]}
+  - {name: 🎵 TikTok, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 PrimeVideo, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 Hulu, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇺🇸 美国节点组, 🇭🇰 香港节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}  
+  - {name: 🎥 HBO, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 AbemaTV, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🎥 BBCiPlayer, type: select, include-all: true, tolerance: 50, interval: 300, filter: "(?i)英国|Britain|United Kingdom|England|伦敦", proxies: [🇬🇧 英国节点组, 🚀 节点选择]}
+  - {name: ⚠️ Banned, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 😎 自建节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🧲 BT, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}  
+  - {name: 🚀 GitHub, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 💰 币安交易, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 📲 Telegram, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 🤖 ChatGPT, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
+  - {name: Ⓜ️ 微软Bing, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]} 
+  - {name: Ⓜ️ 微软服务, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🎯 全球直连,🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
+  - {name: 🐬 OneDrive, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🎯 全球直连, 🚀 节点选择,  🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
+  - {name: 💶 PayPal, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
+  - {name: 😎 自建节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)P-"}
+  - {name: 🇭🇰 香港节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|深港"}
+  - {name: 🇺🇸 美国节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates"}
+  - {name: 🇯🇵 日本节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|JP|Japan|🇯🇵"}
+  - {name: 🇸🇬 新加坡节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)新加坡|坡|狮城|SG|Singapore"}
+  - {name: 🇼🇸 台湾节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)台|新北|彰化|TW|Taiwan"}
+  - {name: 🇰🇷 韩国节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)KR|Korea|KOR|首尔|韩|韓"}
+  - {name: 🇨🇦 加拿大节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)加拿大|Canada|渥太华|温哥华|卡尔加里"}
+  - {name: 🇬🇧 英国节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)英国|Britain|United Kingdom|England|伦敦"}
+  - {name: 🇫🇷 法国节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)法国|France|巴黎"}
+  - {name: 🇩🇪 德国节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)德国|Germany|柏林|法兰克福"}
+  - {name: 🇳🇱 荷兰节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)Netherlands|阿姆斯特丹"}
+  - {name: 🇹🇷 土耳其节点组, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)土耳其|Turkey|Türkiye"}
+  - {name: 🌐 其他地区, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "(?i)^(?!.*(?:港|HK|hk|Hong Kong|HongKong|hongkong|深港|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|JP|Japan|🇯🇵|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|加拿大|Canada|渥太华|温哥华|卡尔加里|英国|Britain|United Kingdom|England|伦敦|法国|France|巴黎|德国|Germany|柏林|法兰克福|荷兰|Netherlands|阿姆斯特丹|土耳其|Turkey|Türkiye)).*"}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
+#  - {name: 🐟 漏网之鱼, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]}
+
+# 此规则部分没有做防泄露处理，因为弊严重大于利！
+# 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
+rules:
+  - RULE-SET,private_ip,🎯 全球直连,no-resolve
+  - RULE-SET,private_domain,🎯 全球直连
+  - RULE-SET,ICBC_domain,🎯 全球直连
+  - RULE-SET,WeChat_domain,🎯 全球直连
+  - RULE-SET,AliPay_domain,🎯 全球直连
+  - RULE-SET,Alibaba_domain,🎯 全球直连
+  - RULE-SET,JingDong_domain,🎯 全球直连
+  - RULE-SET,XianYu_domain,🎯 全球直连
+  - RULE-SET,MeiTuan_domain,🎯 全球直连  
+  - RULE-SET,MyDirect_domain,🎯 全球直连
+  - RULE-SET,MyProxy_domain,🚀 节点选择
+  - RULE-SET,youtube_domain,🎥 YouTube
+  - RULE-SET,GoogleUI_domain,🎥 GoogleUI
+  - RULE-SET,TVB_domain_1,🎥 TVB
+  - RULE-SET,TVB_domain_2,🎥 TVB
+  - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,disney_domain,🎥 Disney
+  - RULE-SET,AppleTV_domain,🎥 AppleTV
+  - RULE-SET,Apple_domain,🎯 全球直连
+  - RULE-SET,USA_domain,🎥 USA
+  - RULE-SET,tiktok_domain,🎵 TikTok
+  - RULE-SET,PrimeVideo_domain,🎥 PrimeVideo
+  - RULE-SET,Hulu_domain,🎥 Hulu
+  - RULE-SET,HBO_domain,🎥 HBO
+  - RULE-SET,AbemaTV_domain,🎥 AbemaTV
+  - RULE-SET,BBCiPlayer_domain,🎥 BBCiPlayer
+  - RULE-SET,Banned_domain,⚠️ Banned
+  - RULE-SET,BT_domain,🧲 BT
+  - RULE-SET,telegram_domain,📲 Telegram 
+  - RULE-SET,ai,🤖 ChatGPT 
+  - RULE-SET,github_domain,🚀 GitHub 
+  - RULE-SET,Binance_domain,💰 币安交易 
+  - RULE-SET,Bing_domain,Ⓜ️ 微软Bing
+  - RULE-SET,microsoft_domain,Ⓜ️ 微软服务
+  - RULE-SET,onedrive_domain,🐬 OneDrive  
+  - RULE-SET,paypal_domain,💶 PayPal   
+  - RULE-SET,google_domain,🚀 节点选择
+# IP类规则 
+  - RULE-SET,google_ip,🚀 节点选择
+  - RULE-SET,apple_ip,🎯 全球直连
+  - RULE-SET,netflix_ip,🎥 NETFLIX
+  - RULE-SET,telegram_ip,📲 Telegram
+  - RULE-SET,geolocation-!cn,🚀 节点选择  
+  - RULE-SET,cn_domain,🎯 全球直连
+  - RULE-SET,cn_ip,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
+
+# 规则集，排序对应上面的 rule-set
+## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+rule-providers: 
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  ICBC_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icbc.mrs"}
+  WeChat_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.list"}
+  AliPay_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AliPay/AliPay.list"}
+  Alibaba_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/alibaba.mrs"}
+  JingDong_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/jd.mrs"}
+  XianYu_domain: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/XianYu/XianYu.list"} 
+  MeiTuan_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/meituan.mrs"}  
+  MyDirect_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Direct.list"}
+  MyProxy_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Proxy.list"}
+  youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  GoogleUI_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
+  TVB_domain_1: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tvb.mrs"}
+  TVB_domain_2: { <<: *domain, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBiliIntl/BiliBiliIntl.list"}
+  netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
+  AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-tvplus.mrs"}
+  Apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"} 
+  USA_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/USA.list"}
+  tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
+  PrimeVideo_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/primevideo.mrs"}
+  Hulu_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hulu.mrs"}
+  HBO_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hbo.mrs"}
+  AbemaTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/abema.mrs"}
+  BBCiPlayer_domain: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BBCiPlayer.list"}
+  Banned_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Banned.list"}
+  BT_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/bt.mrs"}
+  telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
+  ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
+  github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
+  Binance_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"}
+  Bing_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"}
+  microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
+  onedrive_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
+  paypal_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs"}
+  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
+  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+
+  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
+  cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
+  netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+  apple_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs"}
