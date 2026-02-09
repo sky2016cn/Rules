@@ -20,7 +20,7 @@ jobs:
         run: |
           # 使用 curl 模拟浏览器 UA 并添加重试机制
           curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-               # EPG 节目表下载地址
+               # 可更换 EPG 节目表下载地址
                -L "http://epg.51zmt.top:8000/e1.xml" \
                --retry 5 \
                --retry-delay 10 \
@@ -31,5 +31,6 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add e1.xml
-          # 只有当文件有变动时才提交，防止产生无意义的 log
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')" && git push)
+          # 自动创建 IPTV 文件夹，如果已经创建会自动不再创建，将 e1.xml 上传到 IPTV 文件夹内
+          git add IPTV/e1.xml
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG in IPTV folder $(date +'%Y-%m-%d %H:%M')" && git push)
