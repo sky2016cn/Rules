@@ -1,4 +1,4 @@
-name: Update EPG Daily
+name: Update IPTV_EPG
 
 on:
   schedule:
