@@ -4,33 +4,30 @@ on:
   schedule:
     # 每2天北京时间早上 6:00 运行一次 (UTC 22:00)
     - cron: '0 22 */2 * *'
-  workflow_dispatch: # 允许你手动点击按钮测试运行
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 赋予脚本推送到仓库的权限
+      contents: write
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Create IPTV Directory
+        run: mkdir -p IPTV
+
       - name: Download EPG File
         run: |
-          # 使用 curl 模拟浏览器 UA 并添加重试机制
-          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-               # 可更换 EPG 节目表下载地址
-               -L "http://epg.51zmt.top:8000/e1.xml" \
-               --retry 5 \
-               --retry-delay 10 \
-               -o e1.xml
+          # 可更换 EPG 节目表下载地址：http://epg.51zmt.top:8000/e1.xml
+          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -L "http://epg.51zmt.top:8000/e1.xml" --retry 5 --retry-delay 10 -o IPTV/e1.xml
 
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add e1.xml
-          # 自动创建 IPTV 文件夹，如果已经创建会自动不再创建，将 e1.xml 上传到 IPTV 文件夹内
+          # 自动创建 IPTV 文件夹，如果已经存在，不再创建，再将 e1.xml 上传到 IPTV 文件夹内
           git add IPTV/e1.xml
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG in IPTV folder $(date +'%Y-%m-%d %H:%M')" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')" && git push)
