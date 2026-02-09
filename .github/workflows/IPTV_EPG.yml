@@ -17,14 +17,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create IPTV Directory
-        run: mkdir -p IPTV
+        run: mkdir -p IPTV_EPG
 
       - name: Download EPG File
         run: |
           # 可更换 EPG 节目表下载地址：http://epg.51zmt.top:8000/e1.xml
-          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -L "http://epg.51zmt.top:8000/e1.xml" --retry 5 --retry-delay 10 -o IPTV/e1.xml
-          # 可添加另一个 EPG 节目表，文件名称“another.xml”可修改自定义
-          # curl -A "Mozilla/5.0" -L "http://另一个源地址" -o IPTV/another.xml
+          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+               -L "http://epg.51zmt.top:8000/e1.xml" \
+               --retry 5 \
+               --retry-delay 10 
+               -o IPTV_EPG/e1.xml
+          # 可再添加另一个 EPG 节目表，文件名称“another.xml”可修改自定义
+          # curl -A "Mozilla/5.0" -L "http://另一个源地址" -o IPTV_EPG/another.xml
           
       - name: Commit and Push
         run: |
