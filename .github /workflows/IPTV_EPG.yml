@@ -1,0 +1,35 @@
+name: Update EPG Daily
+
+on:
+  schedule:
+    # 每2天北京时间早上 6:00 运行一次 (UTC 22:00)
+    - cron: '0 22 */2 * *'
+  workflow_dispatch: # 允许你手动点击按钮测试运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 赋予脚本推送到仓库的权限
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download EPG File
+        run: |
+          # 使用 curl 模拟浏览器 UA 并添加重试机制
+          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+               # EPG 节目表下载地址
+               -L "http://epg.51zmt.top:8000/e1.xml" \
+               --retry 5 \
+               --retry-delay 10 \
+               -o e1.xml
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add e1.xml
+          # 只有当文件有变动时才提交，防止产生无意义的 log
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')" && git push)
