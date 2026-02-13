@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
+      actions: write  # 增加权限以允许删除记录
+      
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -37,3 +38,11 @@ jobs:
           # 自动创建 IPTV 文件夹，如果已经存在，不再创建，再将 e1.xml 上传到 IPTV 文件夹内
           git add IPTV_EPG/e1.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')" && git push)
+
+      - name: Delete Old Workflow Runs
+        uses: Mattraiano/delete-old-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 7       # 只保留过去 7 天的记录
+          keep_minimum_runs: 3 # 至少保留最近 3 次运行记录
