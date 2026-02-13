@@ -2,8 +2,8 @@ name: Update IPTV_EPG
 
 on:
   schedule:
-    # 每隔2天，北京时间20:00点运行
-    - cron: '0 12 */2 * *'
+    # 每天，北京时间8:17点运行
+    - cron: '17 0 * * *'
   workflow_dispatch: 
 
 jobs:
