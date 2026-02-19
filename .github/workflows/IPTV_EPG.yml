@@ -21,15 +21,38 @@ jobs:
 
       - name: Download EPG File
         run: |
-          # 可更换 EPG 节目表下载地址：http://epg.51zmt.top:8000/e1.xml
-          curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-               -L "http://epg.51zmt.top:8000/e1.xml" \
-               --retry 5 \
-               --retry-delay 10 \
-               -o IPTV_EPG/e1.xml
-          # 可再添加另一个 EPG 节目表，文件名称“another.xml”可修改自定义
-          # curl -A "Mozilla/5.0" -L "http://另一个源地址" -o IPTV_EPG/another.xml
+          # 1. 定义一个通用的下载函数
+          download_file() {
+            local url=$1
+            local output=$2
+            
+            echo "正在尝试下载: $url"
+            # 第一次尝试
+            if curl -A "Mozilla/5.0" -L "$url" --connect-timeout 15 -o "$output"; then
+              echo "✅ $output 下载成功！"
+              return 0
+            else
+              echo "⚠️ $output 第一次失败，等待 10 分钟重试..."
+              sleep 600
+              # 第二次尝试
+              if curl -A "Mozilla/5.0" -L "$url" --connect-timeout 15 -o "$output"; then
+                echo "✅ $output 第二次下载成功！"
+                return 0
+              else
+                echo "❌ $output 最终尝试失败。"
+                return 1
+              fi
+            fi
+          }
+
+          # 2. 执行第一个文件的下载
+          download_file "http://epg.51zmt.top:8000/e1.xml" "IPTV_EPG/e1.xml" || exit 1
+
+          # 3. 如果你想添加“另一个源”，直接在这里照样加一行即可
+          # download_file "http://另一个源地址" "IPTV_EPG/another.xml" || exit 1
           
+          echo "所有下载任务已处理完毕。"
+
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
