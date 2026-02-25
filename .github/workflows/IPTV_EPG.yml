@@ -2,61 +2,81 @@ name: Update IPTV_EPG
 
 on:
   schedule:
-    # 每天，北京时间8:17点运行
+    # 每天北京时间 08:17（UTC 00:17）
     - cron: '17 0 * * *'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
-  build:
+  update-epg:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
-      
+
+    env:
+      TZ: Asia/Shanghai
+
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create IPTV Directory
+      - name: Create IPTV_EPG directory
         run: mkdir -p IPTV_EPG
 
-      - name: Download EPG File
+      - name: Download EPG files
+        shell: bash
         run: |
-          # 1. 定义一个通用的下载函数
+          set -e
+
           download_file() {
-            local url=$1
-            local output=$2
-            
-            echo "正在尝试下载: $url"
-            # 第一次尝试
-            if curl -A "Mozilla/5.0" -L "$url" --connect-timeout 15 -o "$output"; then
-              echo "✅ $output 下载成功！"
-              return 0
-            else
-              echo "⚠️ $output 第一次失败，等待 10 分钟重试..."
-              sleep 600
-              # 第二次尝试
-              if curl -A "Mozilla/5.0" -L "$url" --connect-timeout 15 -o "$output"; then
-                echo "✅ $output 第二次下载成功！"
-                return 0
+            local url="$1"
+            local output="$2"
+
+            echo "➡️ 尝试下载: $url"
+
+            for attempt in 1 2; do
+              echo "第 $attempt 次尝试..."
+              if curl -A "Mozilla/5.0" -L "$url" \
+                --connect-timeout 30 \
+                --max-time 90 \
+                -o "$output"; then
+
+                if [ -s "$output" ]; then
+                  echo "✅ 下载成功: $output ($(du -h "$output" | cut -f1))"
+                  return 0
+                else
+                  echo "⚠️ 文件为空，视为失败"
+                fi
               else
-                echo "❌ $output 最终尝试失败。"
-                return 1
+                echo "⚠️ 下载失败"
               fi
-            fi
+
+              [ "$attempt" -eq 1 ] && sleep 30
+            done
+
+            echo "❌ 下载彻底失败: $url"
+            return 1
           }
 
-          # 2. 执行第一个文件的下载
-          download_file "http://epg.51zmt.top:8000/e1.xml" "IPTV_EPG/e1.xml" || exit 1
+          # ===== 在这里添加 / 修改 EPG 源 =====
+          download_file "http://epg.51zmt.top:8000/e1.xml" "IPTV_EPG/e1.xml" || {
+            echo "❌ 本次 EPG 下载彻底失败，不进行更新，本次 workflow 将标记为失败"
+            exit 1
+          }
 
-          # 3. 如果你想添加“另一个源”，直接在这里照样加一行即可
-          # download_file "http://另一个源地址" "IPTV_EPG/another.xml" || exit 1
-          
-          echo "所有下载任务已处理完毕。"
+          echo "🎉 所有下载任务完成"
 
-      - name: Commit and Push
+      - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          # 自动创建 IPTV 文件夹，如果已经存在，不再创建，再将 e1.xml 上传到 IPTV 文件夹内
-          git add IPTV_EPG/e1.xml
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')" && git push)
+
+          git add IPTV_EPG/
+
+          if git diff --staged --quiet; then
+            echo "📭 文件未发生变化，跳过提交"
+          else
+            git commit -m "Update EPG $(date +'%Y-%m-%d %H:%M')"
+            git push
+            echo "🚀 更新已推送"
+          fi
