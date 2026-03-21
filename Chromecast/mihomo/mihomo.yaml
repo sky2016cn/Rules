@@ -133,8 +133,7 @@ proxy-groups:
   - {name: 🇳🇱 荷兰节点组, type: fallback, include-all: true, tolerance: 50, interval: 300, filter: "(?i)Netherlands|阿姆斯特丹"}
   - {name: 🇹🇷 土耳其节点组, type: fallback, include-all: true, tolerance: 50, interval: 300, filter: "(?i)土耳其|Turkey|Türkiye"}
   - {name: 🌐 其他地区, type: fallback, include-all: true, tolerance: 50, interval: 300, filter: "(?i)^(?!.*(?:港|HK|hk|Hong Kong|HongKong|hongkong|深港|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|UnitedStates|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|(?<!尼|-)日|JP|Japan|🇯🇵|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|加拿大|Canada|渥太华|温哥华|卡尔加里|英国|Britain|United Kingdom|England|伦敦|法国|France|巴黎|德国|Germany|柏林|法兰克福|荷兰|Netherlands|阿姆斯特丹|土耳其|Turkey|Türkiye)).*"}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-#  - {name: 🐟 漏网之鱼, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]}
+  - {name: 🐟 漏网之鱼, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]}
  
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 # 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
@@ -153,6 +152,7 @@ rules:
   - RULE-SET,youtube_domain,🎥 YouTube
   - RULE-SET,GoogleUI_domain,🎥 GoogleUI
   - RULE-SET,TVB_domain,🎥 TVB
+  - RULE-SET,TVB_Fix_domain,🎥 TVB
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,disney_domain,🎥 Disney
   - RULE-SET,AppleTV_domain,🎥 AppleTV
@@ -206,6 +206,7 @@ rule-providers:
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   GoogleUI_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
   TVB_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tvb.mrs"}
+  TVB_Fix_domain: { <<: *domain, url: https://raw.githubusercontent.com/sky2016cn/Rules/refs/heads/main/TVB_Fix.list"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
   AppleTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-tvplus.mrs"}
@@ -218,7 +219,6 @@ rule-providers:
   AbemaTV_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/abema.mrs"}
   BBCiPlayer_domain: { <<: *class, url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BBCiPlayer.list"}
   Banned_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Banned.list"}
-  BT_domain: { <<: *class, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/bt.mrs"}
   telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
   ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
