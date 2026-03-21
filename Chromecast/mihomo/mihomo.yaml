@@ -205,7 +205,7 @@ rule-providers:
   MyProxy_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/Proxy.list"}
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   GoogleUI_domain: { <<: *class, url: "https://raw.githubusercontent.com/sky2016cn/Rules/main/GoogleUI.list"}
-  TVB_domain: { <<: *class, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tvb.mrs"}
+  TVB_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tvb.mrs"}
   TVB_Fix_domain: { <<: *class, url: https://raw.githubusercontent.com/sky2016cn/Rules/refs/heads/main/TVB_Fix.list"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
   disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
