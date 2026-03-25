@@ -27,6 +27,10 @@ DOMAIN-SUFFIX,citics.com
 DOMAIN-SUFFIX,cfhc.citic
 DOMAIN-SUFFIX,videocc.net
 
+# Microsoft 跨设备活动同步 服务
+DOMAIN-SUFFIX,activity.windows.com
+DOMAIN-SUFFIX,assets.activity.windows.com
+
 # Microsoft Mail
 DOMAIN,imap-mail.outlook.com
 DOMAIN,outlook.office365.com
