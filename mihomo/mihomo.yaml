@@ -1,9 +1,7 @@
-# 此模板适用于 Chromecast
+# 此模板适用于 Chromecast，此版本不适合跑裸核
 # 此模板增加了工行、微信、支付宝、阿里巴巴、闲鱼、京东、美团等规则
-# 模板地址：https://github.com/qichiyuhub/rule/blob/main/config/mihomo/config.yaml
-# 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
-# 跑裸核用户请自行去掉下方控制面板模块的注释。
 # 机场订阅，Airport1、Airport2，可以添加多个机场
+# 删除了“全局配置、嗅探、入站、DNS模块”，被删除的4大模块在 OpenClash 上设置，只适用于 Fake-IP 模式 
 
 proxy-providers:
   Airport1:
@@ -19,80 +17,6 @@ proxy-providers:
 # 添加自建节点在最上方，不能删除“🎯 全球直连”节点，否则无法运行
 proxies:
   - {name: 🎯 全球直连, type: direct}
-
-# 全局配置
-mixed-port: 7890
-allow-lan: true
-bind-address: "*"
-ipv6: false
-unified-delay: true
-tcp-concurrent: true
-log-level: warning
-client-fingerprint: chrome
-keep-alive-idle: 600
-keep-alive-interval: 15
-profile:
-  store-selected: true
-  store-fake-ip: true
-
-# 为防止使用插件朋友遇到面板问题，我注释掉了此模块。
-# 跑裸核朋友自行删除注释即可，使用nikki仅内核的ui路径改为/etc/nikki/run/ui
-#external-controller: 0.0.0.0:9090
-#secret: ""
-#external-ui: ui
-#external-ui-name: zashboard
-#external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
-
-# 嗅探
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  skip-domain:
-# 米家智能家居域名
-# 苹果后台推送域名
-    - "Mijia Cloud"
-    - "+.push.apple.com"
-
-# 入站  
-tun:
-  enable: true
-  # system/gvisor/mixed
-  stack: mixed
-  dns-hijack: ["any:53", "tcp://any:53"]
-  #使用nikki，混入全部不修改的情况，开启接口指定为nikki
-  #device: nikki
-  #使用仅内核自行修改下面三项为true
-  auto-route: false
-  auto-redirect: false
-  auto-detect-interface: false
-
-# DNS模块
-dns:
-  enable: true
-  cache-algorithm: arc
-  listen: 0.0.0.0:1053
-  ipv6: false
-  respect-rules: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
-  fake-ip-filter-mode: blacklist
-  fake-ip-filter:
-# 注释掉 default-nameserver，在 OpenClash 设置，会自动覆盖
-  default-nameserver:
-    #- https://223.5.5.5/dns-query
-  proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
  
 # 管理界面排序
 proxy-groups:
