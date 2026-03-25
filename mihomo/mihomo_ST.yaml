@@ -1,7 +1,7 @@
 # 此模板适用于 Chromecast，此版本不适合跑裸核
 # 此模板增加了工行、微信、支付宝、阿里巴巴、闲鱼、京东、美团等规则
 # 机场订阅，Airport1、Airport2，可以添加多个机场
-# 删除了“全局配置、嗅探、入站、DNS模块”，被删除的4大模块在 OpenClash 上设置，只适用于 Fake-IP 模式 
+# 删除了“全局配置、嗅探、入站、DNS模块”4大模块，在 OpenClash 上设置替换，只适用于 Fake-IP 模式 
 
 proxy-providers:
   Airport1:
