@@ -5,7 +5,7 @@
 
 proxy-providers:
   Airport1:
-    url: "https://wd-red.com/subscribe/kpgjza-70kjl_ps-XJBWfddRzYE4"
+    url: "机场订阅链接，不要删除双引号"
     type: http
     interval: 86400
     health-check:
