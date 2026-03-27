@@ -98,7 +98,7 @@ rules:
   - RULE-SET,paypal_domain,💶 PayPal   
   - RULE-SET,google_domain,🚀 节点选择
 # IP类规则
-# mihomo 提供的规则库中 IP类规则集 都不带“no-resolve”，注意：不要修改成🧲 BT,🎯 全球直连,no-resolve，否则🧲 BT就无法选择其他节点
+# mihomo 提供的规则库中 IP类规则集 都不带“no-resolve”，注意：下方"🧲 BT"规则，不要添加",🎯 全球直连"，否则无法选择其他节点
   - RULE-SET,BT_ip,🧲 BT,no-resolve
   - RULE-SET,google_ip,🚀 节点选择,no-resolve
   - RULE-SET,apple_ip,🎯 全球直连,no-resolve
