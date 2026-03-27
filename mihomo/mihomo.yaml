@@ -33,7 +33,7 @@ proxy-groups:
   - {name: ⚠️ Banned, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 😎 自建节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🧲 BT, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}  
   - {name: 🚀 GitHub, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
-  - {name: 💰 币安交易, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
+  - {name: 💰 币安交易, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🇼🇸 台湾节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 📲 Telegram, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇸🇬 新加坡节点组, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]}
   - {name: 🤖 AI服务, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区]} 
   - {name: Ⓜ️ 微软Bing, type: select, include-all: true, tolerance: 50, interval: 300, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇯🇵 日本节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🇰🇷 韩国节点组, 🇨🇦 加拿大节点组, 🇬🇧 英国节点组, 🇫🇷 法国节点组, 🇩🇪 德国节点组, 🇳🇱 荷兰节点组, 🇹🇷 土耳其节点组, 🌐 其他地区, 🎯 全球直连]} 
@@ -98,8 +98,8 @@ rules:
   - RULE-SET,paypal_domain,💶 PayPal   
   - RULE-SET,google_domain,🚀 节点选择
 # IP类规则
-# mihomo 提供的规则库中 IP类规则集 都不带“no-resolve”
-  - RULE-SET,BT_ip,🧲 BT,🎯 全球直连,no-resolve
+# mihomo 提供的规则库中 IP类规则集 都不带“no-resolve”，注意：不要修改成🧲 BT,🎯 全球直连,no-resolve，否则🧲 BT就无法选择其他节点
+  - RULE-SET,BT_ip,🧲 BT,no-resolve
   - RULE-SET,google_ip,🚀 节点选择,no-resolve
   - RULE-SET,apple_ip,🎯 全球直连,no-resolve
   - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
