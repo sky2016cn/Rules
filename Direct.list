@@ -27,12 +27,14 @@ DOMAIN-SUFFIX,citics.com
 DOMAIN-SUFFIX,cfhc.citic
 DOMAIN-SUFFIX,videocc.net
 
-# Microsoft Mail
+# Outlook / Hotmail / Microsoft 邮件相关
 DOMAIN,imap-mail.outlook.com
 DOMAIN,outlook.office365.com
 DOMAIN,smtp-mail.outlook.com
 DOMAIN,smtp.office365.com
-DOMAIN-SUFFIX,m.hotmail.com
+DOMAIN-SUFFIX,hotmail.com
+DOMAIN-SUFFIX,outlook.com
+DOMAIN-SUFFIX,live.com
 
 # 领英国际
 DOMAIN-SUFFIX,linkedin.cn
