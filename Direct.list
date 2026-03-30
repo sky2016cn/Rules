@@ -33,6 +33,9 @@ DOMAIN,outlook.office365.com
 DOMAIN,smtp-mail.outlook.com
 DOMAIN,smtp.office365.com
 DOMAIN-SUFFIX,m.hotmail.com
+DOMAIN-SUFFIX,outlook.com,DIRECT
+DOMAIN-SUFFIX,live.com,DIRECT
+DOMAIN-SUFFIX,office.com,DIRECT
 
 # 领英国际
 DOMAIN-SUFFIX,linkedin.cn
