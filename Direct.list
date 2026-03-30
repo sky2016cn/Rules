@@ -33,8 +33,8 @@ DOMAIN,smtp-mail.outlook.com
 DOMAIN,smtp.office365.com
 DOMAIN,outlook.office365.com
 DOMAIN,outlook.office.com
-DOMAIN,login.microsoftonline.com
 DOMAIN,login.microsoft.com 
+DOMAIN,login.microsoftonline.com
 DOMAIN-SUFFIX,hotmail.com
 DOMAIN-SUFFIX,outlook.com
 DOMAIN-SUFFIX,live.com
