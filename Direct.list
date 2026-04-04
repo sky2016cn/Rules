@@ -39,5 +39,8 @@ DOMAIN-SUFFIX,hotmail.com
 DOMAIN-SUFFIX,outlook.com
 DOMAIN-SUFFIX,live.com
 
+#每日英语听力
+DOMAIN-SUFFIX,eudic.net
+
 # 领英国际
 DOMAIN-SUFFIX,linkedin.cn
