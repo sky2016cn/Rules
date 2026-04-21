@@ -13,6 +13,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🎯 全球直连
+# 如果不用机场，只用自建节点，以上内容可全部删除
 
 # 添加自建节点在最上方，不能删除“🎯 全球直连”节点，否则无法运行
 proxies:
