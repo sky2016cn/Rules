@@ -4,7 +4,7 @@ on:
     paths:
       - '*.list'
   workflow_dispatch:
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,26 +12,18 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v6
-
+      
       - name: Install Tools
         run: |
           set -e
-
-          # sing-box 锁定版本
-          SB_VERSION="1.11.0"
+          SB_VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest \
+            | jq -r '.tag_name | ltrimstr("v")')
           echo "sing-box version: $SB_VERSION"
           curl -Lo sb.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-linux-amd64.tar.gz"
           tar -xzf sb.tar.gz
           mv "sing-box-${SB_VERSION}-linux-amd64/sing-box" ./sb_compiler
           chmod +x sb_compiler
-
-          # mihomo 锁定版本
-          MIHOMO_VERSION="v1.19.9"
-          echo "mihomo version: $MIHOMO_VERSION"
-          curl -Lo mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-          gunzip -c mihomo.gz > m_compiler
-          chmod +x m_compiler
-
+          
       - name: Compile Rules
         run: |
           set -e
@@ -40,28 +32,18 @@ jobs:
           for f in *.list; do
             name=${f%.list}
             echo "处理: $f"
-
-            # sing-box srs
             python3 .github/workflows/build.py "$f" "$name"
             if [ -f "$name.json" ]; then
               ./sb_compiler rule-set compile "$name.json" -o "rules/$name.srs"
               rm -f "$name.json"
             fi
-
-            # mihomo mrs：使用 build.py 生成的纯域名文件
-            if [ -f "${name}_domain.list" ] && [ -s "${name}_domain.list" ]; then
-              echo "=== 完整 domain list ==="
-              cat "${name}_domain.list"   # 加这行
-              ./m_compiler convert-ruleset domain text "${name}_domain.list" "rules/$name.mrs"
-            fi
-            rm -f "${name}_domain.list"
           done
-
+          
       - name: Commit
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
-          git add rules/*.srs rules/*.mrs || true
+          git add rules/
           if git diff --staged --quiet; then
             echo "no changes"
           else
