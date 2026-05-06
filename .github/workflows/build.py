@@ -2,12 +2,14 @@ import json, ipaddress, sys
 
 file = sys.argv[1]
 name = sys.argv[2]
+
 domain, suffix, keyword, regex, ip = [], [], [], [], []
 
 for line in open(file, encoding="utf-8"):
     line = line.strip()
     if not line or line.startswith("#") or line.startswith("//"):
         continue
+
     if line.startswith("DOMAIN,"):
         domain.append(line.split(",", 1)[1])
     elif line.startswith("DOMAIN-SUFFIX,"):
@@ -41,13 +43,13 @@ if not rule:
 data = {"version": 3, "rules": [rule]}
 json.dump(data, open(name + ".json", "w"), indent=2, ensure_ascii=False)
 
-with open(file, encoding="utf-8") as fin, \
-     open(name + "_filtered.list", "w", encoding="utf-8") as fout:
-    for line in fin:
-        s = line.strip()
-        if not s or s.startswith("#") or s.startswith("//"):
-            continue
-        if s.startswith("DOMAIN-SUFFIX,"):
-            fout.write(s.split(",", 1)[1] + "\n")
-        elif s.startswith("DOMAIN-KEYWORD,"):
-            fout.write(s.split(",", 1)[1] + "\n")
+# 输出 mihomo mrs 所需的纯域名格式
+# convert-ruleset domain text 只接受域名，格式：
+#   +.example.com  → 匹配子域名（对应 DOMAIN-SUFFIX）
+#   example.com    → 精确匹配（对应 DOMAIN）
+# KEYWORD / REGEX / IP 不支持，跳过
+with open(name + "_domain.list", "w", encoding="utf-8") as fout:
+    for d in suffix:
+        fout.write(f"+.{d}\n")
+    for d in domain:
+        fout.write(f"{d}\n")
