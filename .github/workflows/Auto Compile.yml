@@ -43,6 +43,9 @@ jobs:
             name=${f%.list}
             echo "处理: $f"
 
+            # 先跑 build.py，生成 json 和 _filtered.list
+            python3 .github/workflows/build.py "$f" "$name"
+      
             echo "=== filtered 前5行 ==="
             head -5 "${name}_filtered.list"
 
