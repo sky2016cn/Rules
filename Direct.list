@@ -1,0 +1,46 @@
+# 我的直连，包含国内和国外的域名
+# 同花顺、文华期货、徽商期货交易APP、东方证券、中信证券直连
+# 微软官网直连
+# outlook邮箱直连
+
+# 同花顺
+DOMAIN-SUFFIX,10jqka.com.cn
+DOMAIN-SUFFIX,thsi.cn
+DOMAIN-SUFFIX,hexin.cn
+
+# 文华期货
+DOMAIN-SUFFIX,wenhua.com.cn
+DOMAIN-SUFFIX,yksdks.com
+DOMAIN-SUFFIX,dutils.com
+
+# 徽商期货交易APP
+DOMAIN-SUFFIX,pobo.net.cn
+DOMAIN-SUFFIX,hsqh.net
+
+# 东方证券
+DOMAIN-SUFFIX,dfzq.com.cn
+DOMAIN-SUFFIX,hscloud.cn
+
+# 中信证券
+DOMAIN-SUFFIX,citicsinfo.com
+DOMAIN-SUFFIX,citics.com
+DOMAIN-SUFFIX,cfhc.citic
+DOMAIN-SUFFIX,videocc.net
+
+# Microsoft Mail
+DOMAIN,imap-mail.outlook.com
+DOMAIN,smtp-mail.outlook.com
+DOMAIN,smtp.office365.com
+DOMAIN,outlook.office365.com
+DOMAIN,outlook.office.com
+DOMAIN,login.microsoft.com 
+DOMAIN,login.microsoftonline.com
+DOMAIN-SUFFIX,hotmail.com
+DOMAIN-SUFFIX,outlook.com
+DOMAIN-SUFFIX,live.com
+
+#每日英语听力
+DOMAIN-SUFFIX,eudic.net
+
+# 领英国际
+DOMAIN-SUFFIX,linkedin.cn
