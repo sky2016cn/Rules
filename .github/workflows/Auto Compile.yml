@@ -52,8 +52,8 @@ jobs:
 
             # mihomo mrs：使用 build.py 生成的纯域名文件
             if [ -f "${name}_domain.list" ] && [ -s "${name}_domain.list" ]; then
-              echo "=== domain list 前5行 ==="
-              head -5 "${name}_domain.list"
+              echo "=== 完整 domain list ==="
+              cat "${name}_domain.list"   # 加这行
               ./m_compiler convert-ruleset domain text "${name}_domain.list" "rules/$name.mrs"
             fi
             rm -f "${name}_domain.list"
