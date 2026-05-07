@@ -6,6 +6,6 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"                    # 监控整个仓库的所有 workflow
     schedule:
-      interval: "weekly"           # 每周检查一次
+      interval: "weekly"           # 每周检查一次，或改成"monthly"每月检查一次
       timezone: "Asia/Shanghai"
     open-pull-requests-limit: 10       # 最多同时打开10个PR
