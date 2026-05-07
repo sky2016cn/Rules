@@ -1,8 +1,8 @@
 name: Watch Remote Rulesets
 
 on:
-  schedule:
-    - cron: '25 3 * * *'     # 避开 UTC 0 点高峰，选在 UTC 03:25（北京时间 11:25） 
+  #schedule:
+  #  - cron: '25 3 * * *'     # 避开 UTC 0 点高峰，每天选在 UTC 03:25（北京时间 11:25） 
   workflow_dispatch:
 
 jobs:
