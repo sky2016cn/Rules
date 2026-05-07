@@ -1,0 +1,107 @@
+name: Watch Remote Rulesets
+
+on:
+  schedule:
+    - cron: '25 3 * * *'     # 避开 UTC 0 点高峰，选在 UTC 03:25（北京时间 11:25） 
+  workflow_dispatch:
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Tools
+        run: |
+          set -e
+          # sing-box
+          SB_VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest \
+            | jq -r '.tag_name | ltrimstr("v")')
+          curl -Lo sb.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-linux-amd64.tar.gz"
+          tar -xzf sb.tar.gz
+          mv "sing-box-${SB_VERSION}-linux-amd64/sing-box" ./sb_compiler
+          chmod +x sb_compiler
+          # mihomo
+          MIHOMO_VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
+            | jq -r '.tag_name')
+          curl -Lo mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+          gunzip -c mihomo.gz > m_compiler
+          chmod +x m_compiler
+
+      - name: Check and Convert Remote Rules
+        run: |
+          set -e
+          mkdir -p rules .cache
+
+          # ── 在这里配置要监控的远程规则 ──────────────────────────────────
+          # 格式：URL|输出文件名（不含扩展名）
+          REMOTE_RULES=(
+            "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BBCiPlayer.list|BBCiPlayer"
+            # 继续添加，例如：
+            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/AliPay/AliPay.list"
+            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/WeChat/WeChat.list"
+            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/XianYu/XianYu.list"
+          )
+          # ─────────────────────────────────────────────────────────────────
+
+          CHANGED=0
+
+          for entry in "${REMOTE_RULES[@]}"; do
+            URL="${entry%%|*}"
+            NAME="${entry##*|}"
+            CACHE_FILE=".cache/${NAME}.sha256"
+
+            echo ">>> 检查: $NAME"
+
+            # 下载文件
+            curl -fsSL "$URL" -o "${NAME}.list" || { echo "下载失败: $URL"; continue; }
+
+            # 计算 SHA256
+            NEW_SHA=$(sha256sum "${NAME}.list" | awk '{print $1}')
+            OLD_SHA=$(cat "$CACHE_FILE" 2>/dev/null || echo "")
+
+            if [ "$NEW_SHA" = "$OLD_SHA" ]; then
+              echo "  无变化，跳过"
+              rm -f "${NAME}.list"
+              continue
+            fi
+
+            echo "  检测到更新 ($OLD_SHA -> $NEW_SHA)"
+            CHANGED=1
+
+            # 生成 sing-box JSON + mihomo domain list
+            python3 .github/workflows/build.py "${NAME}.list" "$NAME"
+
+            # 编译 .srs
+            if [ -f "${NAME}.json" ]; then
+              ./sb_compiler rule-set compile "${NAME}.json" -o "rules/${NAME}.srs"
+              echo "  ✓ rules/${NAME}.srs"
+              rm -f "${NAME}.json"
+            fi
+
+            # 编译 .mrs
+            if [ -f "${NAME}_domain.list" ] && [ -s "${NAME}_domain.list" ]; then
+              ./m_compiler convert-ruleset domain text "${NAME}_domain.list" "rules/${NAME}.mrs"
+              echo "  ✓ rules/${NAME}.mrs"
+            fi
+
+            # 更新缓存
+            echo "$NEW_SHA" > "$CACHE_FILE"
+
+            # 清理临时文件
+            rm -f "${NAME}.list" "${NAME}_domain.list"
+          done
+
+          echo "CHANGED=$CHANGED" >> "$GITHUB_ENV"
+
+      - name: Commit
+        if: env.CHANGED == '1'
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add rules/ .cache/
+          git diff --staged --quiet || \
+            git commit -m "auto update remote rules [skip ci]" && git push
