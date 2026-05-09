@@ -42,23 +42,34 @@ jobs:
           for f in *.list; do
             name=${f%.list}
             echo "处理: $f"
-
-            # sing-box srs
+            
+            # 编译 .srs（域名+IP段）
             python3 .github/workflows/build.py "$f" "$name"
             if [ -f "$name.json" ]; then
               ./sb_compiler rule-set compile "$name.json" -o "rules/$name.srs"
               rm -f "$name.json"
             fi
-
-            # mihomo mrs：使用 build.py 生成的纯域名文件
+            
+            # 编译 .mrs（域名）
             if [ -f "${name}_domain.list" ] && [ -s "${name}_domain.list" ]; then
               echo "=== domain list 前5行 ==="
               head -5 "${name}_domain.list"
               ./m_compiler convert-ruleset domain text "${name}_domain.list" "rules/$name.mrs"
+              echo "  ✓ rules/$name.mrs"
             fi
-            rm -f "${name}_domain.list"
+            
+            # 编译 .mrs（IP 段）
+            if [ -f "${name}_ip.list" ] && [ -s "${name}_ip.list" ]; then
+              echo "=== ip list 前5行 ==="
+              head -5 "${name}_ip.list"
+              ./m_compiler convert-ruleset ipcidr text "${name}_ip.list" "rules/${name}_ip.mrs"
+              echo "  ✓ rules/${name}_ip.mrs"
+            fi
+            
+            # 清理临时文件
+            rm -f "${name}_domain.list" "${name}_ip.list"
           done
-
+          
       - name: Commit
         run: |
           git config user.name "GitHub Action"
