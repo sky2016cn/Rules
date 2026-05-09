@@ -84,17 +84,22 @@ jobs:
               rm -f "${NAME}.json"
             fi
 
-            # 编译 .mrs
+            # 编译 .mrs（域名）
             if [ -f "${NAME}_domain.list" ] && [ -s "${NAME}_domain.list" ]; then
-              ./m_compiler convert-ruleset domain text "${NAME}_domain.list" "rules/${NAME}.mrs"
-              echo "  ✓ rules/${NAME}.mrs"
+                ./m_compiler convert-ruleset domain text "${NAME}_domain.list" "rules/${NAME}.mrs"
+                echo "  ✓ rules/${NAME}.mrs"
             fi
-
+            
+            # 编译 .mrs（IP 段）
+            if [ -f "${NAME}_ip.list" ] && [ -s "${NAME}_ip.list" ]; then
+                  ./m_compiler convert-ruleset ipcidr text "${NAME}_ip.list" "rules/${NAME}_ip.mrs"
+                  echo "  ✓ rules/${NAME}_ip.mrs"
+            fi
             # 更新缓存
             echo "$NEW_SHA" > "$CACHE_FILE"
-
+            
             # 清理临时文件
-            rm -f "${NAME}.list" "${NAME}_domain.list"
+            rm -f "${NAME}.list" "${NAME}_domain.list" "${NAME}_ip.list"
           done
 
           echo "CHANGED=$CHANGED" >> "$GITHUB_ENV"
