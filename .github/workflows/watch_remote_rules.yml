@@ -77,7 +77,7 @@ jobs:
             # 生成 sing-box JSON + mihomo domain list
             python3 .github/workflows/build.py "${NAME}.list" "$NAME"
 
-            # 编译 .srs
+            # 编译 .srs（域名+IP段）
             if [ -f "${NAME}.json" ]; then
               ./sb_compiler rule-set compile "${NAME}.json" -o "rules/${NAME}.srs"
               echo "  ✓ rules/${NAME}.srs"
