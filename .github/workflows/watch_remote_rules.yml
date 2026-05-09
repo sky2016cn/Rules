@@ -94,6 +94,7 @@ jobs:
                   ./m_compiler convert-ruleset ipcidr text "${NAME}_ip.list" "rules/${NAME}_ip.mrs"
                   echo "  ✓ rules/${NAME}_ip.mrs"
             fi
+            
             # 更新缓存
             echo "$NEW_SHA" > "$CACHE_FILE"
             
