@@ -40,12 +40,12 @@ jobs:
           # 格式：URL|输出文件名（不含扩展名）
           REMOTE_RULES=(
             # 添加，例如："https://raw......|输出文件名
-            https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/Telegram/Telegram.list|Telegram
+            "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/Telegram/Telegram.list|Telegram"
             #"https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BBCiPlayer.list|BBCiPlayer"
             #"https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/ICBC/ICBC.list|ICBC"
-            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/AliPay/AliPay.list|AliPay"
-            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/WeChat/WeChat.list|WeChat"
-            # "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/XianYu/XianYu.list|XianYu"
+            #"https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/AliPay/AliPay.list|AliPay"
+            #"https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/WeChat/WeChat.list|WeChat"
+            #"https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/release/rule/Clash/XianYu/XianYu.list|XianYu"
           )
           # ─────────────────────────────────────────────────────────────────
 
