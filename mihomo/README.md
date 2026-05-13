@@ -1,4 +1,4 @@
-# 模板说明：不支持在线订阅生成配置文件，适用于 OpenClash、Clash Verge，不适用于 Clash for Windows
+# 模板说明：不支持在线订阅生成配置文件，适用于 OpenClash、Clash Party、Clash Verge，不适用于 Clash for Windows
 ---
 
 - 模板必须自建“🎯 全球直连”节点，才能正常使用：
