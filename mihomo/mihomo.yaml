@@ -46,7 +46,7 @@ proxy-groups:
   - {name: 🇸🇬 新加坡节点组, type: fallback, include-all: true, interval: 300, filter: "(?i)新加坡|坡|狮城|SG|Singapore", proxies: [REJECT]} 
   - {name: 🇼🇸 台湾节点组, type: fallback, include-all: true, interval: 300, filter: "(?i)台|新北|彰化|TW|Taiwan", proxies: [REJECT]} 
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
-  - {name: 🐟 漏网之鱼, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组]}
+  - {name: 🐟 漏网之鱼, type: select, include-all: true, proxies: [🚀 节点选择, 🇭🇰 香港节点组, 🇺🇸 美国节点组, 🇸🇬 新加坡节点组, 🇼🇸 台湾节点组, 🎯 全球直连]}
  
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 # 规则匹配，从上而下匹配，排序很重要，直接影响 GoogleTV 能否正常播放tubi、AppleTV
