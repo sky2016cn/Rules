@@ -1,0 +1,67 @@
+# 此模板适用于 Chromecast，此版本不适合跑裸核
+# 机场订阅，Airport1、Airport2，可以添加多个机场
+# 删除了“全局配置、嗅探、入站、DNS模块”4大模块，在 OpenClash 上设置替换，适用于 Fake-IP 模式 
+
+proxy-providers:
+  Airport:
+    url: "机场订阅链接，不要删除双引号"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🎯 全球直连
+# 支持Airport1、Airport2 多个机场，如果不用机场，以上内容可全部删除
+
+# 下方添加自建节点
+proxies:
+  #- {name: 自建节点1 ......}
+  #- {name: 自建节点2 ......}
+ 
+# 管理界面排序
+proxy-groups:
+  - {name: 🚀 节点选择, type: select, include-all: true} 
+  - {name: 🎥 YouTube, type: select, include-all: true, proxies: [🚀 节点选择]}
+  - {name: 📲 Telegram, type: select, include-all: true, proxies: [🚀 节点选择]}
+  - {name: 🤖 AI服务, type: select, include-all: true, proxies: [🚀 节点选择]} 
+  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: 🐟 漏网之鱼, type: select, include-all: true, proxies: [🚀 节点选择]} 
+ 
+rules:
+  - RULE-SET,private_ip,🎯 全球直连,no-resolve
+  - RULE-SET,private_domain,🎯 全球直连
+  - RULE-SET,youtube_domain,🎥 YouTube
+  - RULE-SET,Apple_cn,🎯 全球直连
+  - RULE-SET,telegram_domain,📲 Telegram 
+  - RULE-SET,ai,🤖 AI服务 
+  - RULE-SET,microsoft_cn,🎯 全球直连
+  - RULE-SET,google_domain,🚀 节点选择
+# IP类规则
+  - RULE-SET,google_ip,🚀 节点选择,no-resolve
+  - RULE-SET,apple_ip,🎯 全球直连,no-resolve
+# 兜底策略  
+  - RULE-SET,cn_domain,🎯 全球直连
+  - RULE-SET,cn_ip,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
+
+# 规则集，排序对应上面的 rule-set
+## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+rule-providers: 
+  private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  Apple_cn: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/apple@cn.mrs"} 
+  telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
+  ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
+  microsoft_cn: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/meta/geo/geosite/microsoft@cn.mrs"}
+  google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
+  cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
+
+  private_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
+  cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
+  google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
+  apple_ip: {<<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs"}
