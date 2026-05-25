@@ -14,61 +14,56 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Install Tools
-        run: |
-          set -e
+        - name: Compile Rules
+          run: |
+            set -e
+            shopt -s nullglob
+            mkdir -p rules
 
-          # sing-box
-          SB_VERSION=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest \
-            | jq -r '.tag_name | ltrimstr("v")')
-          echo "sing-box version: $SB_VERSION"
-          curl -Lo sb.tar.gz "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-linux-amd64.tar.gz"
-          tar -xzf sb.tar.gz
-          mv "sing-box-${SB_VERSION}-linux-amd64/sing-box" ./sb_compiler
-          chmod +x sb_compiler
+            # 只编译有变更的 .list 文件（推荐）
+            if [ "${{ github.event_name }}" = "push" ]; then
+              FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.list$' || true)
+            else
+              # workflow_dispatch 时编译全部
+              FILES=$(ls *.list 2>/dev/null || true)
+            fi
 
-          # mihomo
-          MIHOMO_VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
-            | jq -r '.tag_name')
-          echo "mihomo version: $MIHOMO_VERSION"
-          curl -Lo mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-          gunzip -c mihomo.gz > m_compiler
-          chmod +x m_compiler
+            if [ -z "$FILES" ]; then
+              echo "No changed .list files."
+              exit 0
+            fi
 
-      - name: Compile Rules
-        run: |
-          set -e
-          shopt -s nullglob
-          mkdir -p rules
-          for f in *.list; do
-            name=${f%.list}
-            echo "处理: $f"
-            
+            for f in $FILES; do
+              name=${f%.list}
+              echo "=== Processing: $f ==="
+
+              python3 .github/workflows/build.py "$f" "$name" || {
+                echo "❌ build.py failed for $f"
+                exit 1
+              }
+
             # 编译 .srs（域名+IP段）
-            python3 .github/workflows/build.py "$f" "$name"
-            if [ -f "$name.json" ]; then
-              ./sb_compiler rule-set compile "$name.json" -o "rules/$name.srs"
-              rm -f "$name.json"
-            fi
-            
+              if [ -f "$name.json" ]; then
+                ./sb_compiler rule-set compile "$name.json" -o "rules/$name.srs"
+                rm -f "$name.json"
+                echo "✓ rules/$name.srs"
+              fi
+
             # 编译 .mrs（域名）
-            if [ -f "${name}_domain.list" ] && [ -s "${name}_domain.list" ]; then
-              echo "=== domain list 前5行 ==="
-              head -5 "${name}_domain.list"
-              ./m_compiler convert-ruleset domain text "${name}_domain.list" "rules/$name.mrs"
-              echo "  ✓ rules/$name.mrs"
-            fi
-            
+              if [ -f "${name}_domain.list" ] && [ -s "${name}_domain.list" ]; then
+                ./m_compiler convert-ruleset domain text "${name}_domain.list" "rules/$name.mrs"
+                echo "✓ rules/$name.mrs"
+              fi
+
             # 编译 .mrs（IP 段）
-            if [ -f "${name}_ip.list" ] && [ -s "${name}_ip.list" ]; then
-              echo "=== ip list 前5行 ==="
-              head -5 "${name}_ip.list"
-              ./m_compiler convert-ruleset ipcidr text "${name}_ip.list" "rules/${name}_ip.mrs"
-              echo "  ✓ rules/${name}_ip.mrs"
-            fi
-            
+              if [ -f "${name}_ip.list" ] && [ -s "${name}_ip.list" ]; then
+                ./m_compiler convert-ruleset ipcidr text "${name}_ip.list" "rules/${name}_ip.mrs"
+                echo "✓ rules/${name}_ip.mrs"
+              fi
+
             # 清理临时文件
-            rm -f "${name}_domain.list" "${name}_ip.list"
-          done
+              rm -f "${name}_domain.list" "${name}_ip.list"
+            done
           
       - name: Commit
         run: |
