@@ -2,7 +2,7 @@
 # 同花顺、文华期货、徽商期货交易APP、东方证券、中信证券直连
 # 微软官网直连
 # outlook邮箱直连
-DOMAIN-SUFFIX,guancha.com
+
 # 同花顺
 DOMAIN-SUFFIX,10jqka.com.cn
 DOMAIN-SUFFIX,thsi.cn
