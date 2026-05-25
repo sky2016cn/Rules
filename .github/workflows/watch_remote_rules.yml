@@ -74,7 +74,9 @@ jobs:
             CHANGED=1
 
             # 生成 sing-box JSON + mihomo domain list
-            python3 .github/workflows/build.py "${NAME}.list" "$NAME"
+            python3 .github/workflows/build.py "${NAME}.list" "$NAME" || {
+              echo "❌ build.py 执行失败: $NAME"
+              exit 1
 
             # 编译 .srs（域名+IP段）
             if [ -f "${NAME}.json" ]; then
