@@ -1,0 +1,31 @@
+{
+  "dns": {
+    "servers": [
+      { "tag": "dns_proxy", "address": "https://8.8.8.8/dns-query" },
+      { "tag": "dns_direct", "address": "223.5.5.5", "detour": "direct" }
+    ],
+    "rules": [
+      { "outbound": "any", "server": "dns_proxy" },
+      { "clash_mode": "direct", "server": "dns_direct" },
+      { "domain_suffix": [".cn"], "server": "dns_direct" }
+    ]
+  },
+  "inbounds": [
+    { "type": "tun", "inet4_address": "172.19.0.1/30", "auto_route": true, "strict_route": true }
+  ],
+  "outbounds": [
+    // 这里是你期望 subconverter 帮你生成的策略组
+    { "type": "selector", "tag": "🚀 节点选择", "outbounds": ["🍿 香港节点", "🇺🇸 美国节点", "direct"] },
+    { "type": "selector", "tag": "🍿 香港节点", "outbounds": [] }, // 留空，subconverter 会自动把香港节点塞进这里
+    { "type": "selector", "tag": "🇺🇸 美国节点", "outbounds": [] }, // 留空，自动塞入美国节点
+    { "type": "direct", "tag": "direct" },
+    { "type": "block", "tag": "block" }
+  ],
+  "route": {
+    "rules": [
+      { "clash_mode": "direct", "outbound": "direct" },
+      { "clash_mode": "global", "outbound": "🚀 节点选择" },
+      { "domain_suffix": [".cn"], "outbound": "direct" }
+    ]
+  }
+}
